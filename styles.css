@@ -694,6 +694,11 @@ ol {
 }
 
 /* --- 11. Sección Por Qué NestX (Why) --- */
+
+#why {
+  margin-bottom: 5rem;
+}
+
 .why-grid {
   margin-top: 3.5rem;
   display: grid;
@@ -759,6 +764,29 @@ ol {
   margin-top: 3.5rem;
   display: grid;
   gap: 1.5rem;
+}
+
+#who {
+  padding: 0;
+  position: relative;
+}
+
+#who>div.rough-band-top {
+  background: url(images/bkgGrayTop01.gif) no-repeat center bottom;
+  width: 100%;
+  height: 115px;
+  background-size: cover;
+}
+
+#who>div.rough-band-bottom {
+  background: url(images/bkgGrayBot01.gif) no-repeat center top;
+  width: 100%;
+  height: 115px;
+  background-size: cover;
+}
+
+#who>div.container {
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 640px) {

@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileNav.classList.toggle('is-open', isOpen);
       mobileToggle.setAttribute('aria-expanded', String(isOpen));
       if (hamburgerIcon && closeIcon) {
-        hamburgerIcon.style.display = isOpen ? 'none' : 'block';
-        closeIcon.style.display = isOpen ? 'block' : 'none';
+        hamburgerIcon.classList.toggle('is-hidden', isOpen);
+        closeIcon.classList.toggle('is-visible', isOpen);
       }
     };
 
@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
           if (entry.isIntersecting) {
             const el = entry.target;
             const delay = el.getAttribute('data-delay');
-            if (delay) {
-              el.style.transitionDelay = `${delay}ms`;
+            if (delay && delay !== '0') {
+              el.classList.add(`reveal-delay-${delay}`);
             }
             el.classList.add('is-visible');
             observer.unobserve(el);
@@ -148,14 +148,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalEventMeta) modalEventMeta.textContent = `${event.instructor} · ${event.date}`;
 
     // Restablecer a la vista del formulario
-    if (modalFormView) modalFormView.style.display = 'block';
-    if (modalConfirmView) modalConfirmView.style.display = 'none';
+    if (modalFormView) modalFormView.classList.remove('is-hidden');
+    if (modalConfirmView) modalConfirmView.classList.remove('is-visible');
     if (regForm) regForm.reset();
 
     // Abrir backdrop y bloquear scroll
     if (modalBackdrop) {
       modalBackdrop.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('no-scroll');
       const firstInput = regForm?.querySelector('input');
       if (firstInput) setTimeout(() => firstInput.focus(), 50);
     }
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeEventModal = () => {
     if (modalBackdrop) {
       modalBackdrop.classList.remove('is-open');
-      document.body.style.overflow = '';
+      document.body.classList.remove('no-scroll');
     }
   };
 
@@ -218,8 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (confirmUserEmail) confirmUserEmail.textContent = email;
 
       // Mostrar pantalla de confirmación exitosa
-      if (modalFormView) modalFormView.style.display = 'none';
-      if (modalConfirmView) modalConfirmView.style.display = 'block';
+      if (modalFormView) modalFormView.classList.add('is-hidden');
+      if (modalConfirmView) modalConfirmView.classList.add('is-visible');
     });
   }
 
@@ -232,8 +232,8 @@ document.addEventListener('DOMContentLoaded', () => {
         navigator.clipboard.writeText(shareText).then(() => {
           const originalContent = shareBtn.innerHTML;
           shareBtn.innerHTML = `
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #047857;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span style="color: #047857; font-weight: 700;">¡Enlace copiado al portapapeles!</span>
+            <span class="material-symbols-rounded share-success-icon" aria-hidden="true">check_circle</span>
+            <span class="share-success-text">¡Enlace copiado al portapapeles!</span>
           `;
           setTimeout(() => {
             shareBtn.innerHTML = originalContent;
@@ -252,8 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const emailInput = document.getElementById('newsletter-email');
       if (emailInput && emailInput.value) {
-        newsletterForm.style.display = 'none';
-        newsletterSuccess.style.display = 'flex';
+        newsletterForm.classList.add('is-hidden');
+        newsletterSuccess.classList.add('is-visible');
       }
     });
   }

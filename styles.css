@@ -973,7 +973,7 @@ ol {
   display: grid;
   align-items: center;
   gap: 2.5rem;
-  padding-block: 4rem;
+  padding-block: 1rem;
   color: #ffffff;
 }
 
@@ -981,7 +981,6 @@ ol {
   .different-grid {
     grid-template-columns: 1fr 1fr;
     gap: 3.5rem;
-    padding-block: 5rem;
   }
 }
 
@@ -1737,7 +1736,7 @@ ol {
 
 .newsletter-success-box {
   margin-top: 2rem;
-  display: flex;
+  display: none;
   align-items: center;
   gap: 0.75rem;
   border-radius: var(--radius-xl);
@@ -1746,6 +1745,10 @@ ol {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--accent-foreground);
+}
+
+.newsletter-success-box.is-visible {
+  display: flex;
 }
 
 /* --- 19. Sección de Universidades Asociadas --- */
@@ -2069,4 +2072,382 @@ ol {
   justify-content: flex-end;
   gap: 0.75rem;
   padding-top: 0.5rem;
+}
+
+/* --- 23. Iconos Material Symbols Rounded (Google Fonts) --- */
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  user-select: none;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* Tamaños por contexto (iguales a los SVG originales: 12–44 px) */
+.mobile-toggle .material-symbols-rounded {
+  font-size: 22px;
+}
+
+.btn-icon.material-symbols-rounded {
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.challenge-icon-box .material-symbols-rounded {
+  font-size: 44px;
+}
+
+.why-icon-box .material-symbols-rounded {
+  font-size: 28px;
+}
+
+.who-icon-box .material-symbols-rounded,
+.impact-icon-box .material-symbols-rounded,
+.instructor-avatar .material-symbols-rounded {
+  font-size: 24px;
+}
+
+.ecosystem-icon-box .material-symbols-rounded,
+.modal-close-btn .material-symbols-rounded,
+.newsletter-success-box .material-symbols-rounded {
+  font-size: 20px;
+}
+
+.sidebar-icon-box .material-symbols-rounded {
+  font-size: 18px;
+}
+
+.badge-tag .material-symbols-rounded,
+.badge-spots .material-symbols-rounded {
+  font-size: 12px;
+}
+
+.highlights-title .material-symbols-rounded,
+.highlight-icon.material-symbols-rounded,
+.input-icon.material-symbols-rounded,
+.social-btn .material-symbols-rounded {
+  font-size: 16px;
+}
+
+.btn-share .material-symbols-rounded,
+.secondary-event-speaker .material-symbols-rounded,
+.share-success-icon.material-symbols-rounded {
+  font-size: 14px;
+}
+
+.modal-confirm-icon.material-symbols-rounded {
+  font-size: 32px;
+}
+
+.input-icon.material-symbols-rounded {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  pointer-events: none;
+  width: auto;
+  height: auto;
+}
+
+/* --- 24. Clases de reemplazo para estilos inline y estados de JS --- */
+
+/* Utilidades de visibilidad controladas por JS */
+.is-hidden {
+  display: none !important;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+#icon-close {
+  display: none;
+}
+
+#icon-close.is-visible {
+  display: block;
+}
+
+#icon-hamburger.is-hidden {
+  display: none;
+}
+
+.modal-form-view.is-hidden {
+  display: none;
+}
+
+.modal-confirm-view {
+  display: none;
+  padding-block: 1rem;
+  text-align: center;
+}
+
+.modal-confirm-view.is-visible {
+  display: block;
+}
+
+.newsletter-form.is-hidden {
+  display: none;
+}
+
+/* Retardos de revelado (antes transitionDelay inline desde data-delay) */
+.reveal-delay-70 { transition-delay: 70ms; }
+.reveal-delay-80 { transition-delay: 80ms; }
+.reveal-delay-90 { transition-delay: 90ms; }
+.reveal-delay-100 { transition-delay: 100ms; }
+.reveal-delay-120 { transition-delay: 120ms; }
+.reveal-delay-140 { transition-delay: 140ms; }
+.reveal-delay-160 { transition-delay: 160ms; }
+.reveal-delay-180 { transition-delay: 180ms; }
+.reveal-delay-200 { transition-delay: 200ms; }
+.reveal-delay-210 { transition-delay: 210ms; }
+.reveal-delay-220 { transition-delay: 220ms; }
+.reveal-delay-250 { transition-delay: 250ms; }
+.reveal-delay-270 { transition-delay: 270ms; }
+.reveal-delay-280 { transition-delay: 280ms; }
+.reveal-delay-300 { transition-delay: 300ms; }
+.reveal-delay-350 { transition-delay: 350ms; }
+
+/* Secciones de banda rasgada */
+.band-section {
+  padding-block: 2.5rem;
+}
+
+.rough-band--primary {
+  background-color: var(--primary);
+}
+
+.rough-band--dark {
+  background-color: var(--foreground);
+}
+
+.rough-band--dark .rough-band-top {
+  background: url(images/bkgMorTop01.gif) center bottom no-repeat;
+  background-size: cover;
+  height: 115px;
+  width: 100%;
+}
+
+.rough-band--dark .rough-band-bottom {
+  background: url(images/bkgMorBot01.gif) center top no-repeat;
+  background-size: cover;
+  height: 115px;
+  width: 100%;
+}
+
+/* Tipografía y layout antes inline */
+.eyebrow--center {
+  justify-content: center;
+}
+
+.section-title--md {
+  font-size: 2rem;
+}
+
+.section-title--events {
+  font-size: 2.25rem;
+}
+
+.section-title--sm {
+  font-size: 1.75rem;
+}
+
+.section-title--modal {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.section-subtitle--sm {
+  font-size: 0.875rem;
+}
+
+.section-subtitle--center {
+  margin-inline: auto;
+}
+
+.container--relative {
+  position: relative;
+}
+
+.mobile-nav-cta {
+  margin-top: 0.75rem;
+}
+
+.featured-event-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.icon--primary {
+  color: var(--primary);
+}
+
+.sidebar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar-head-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+}
+
+.status-pill {
+  border-radius: var(--radius-sm);
+  background-color: var(--accent);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.sidebar-cert-note strong {
+  color: var(--foreground);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+.btn--nowrap {
+  white-space: nowrap;
+}
+
+.btn--primary-text {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.secondary-event-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.event-meta {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.cta-banner-actions {
+  margin-top: 2rem;
+}
+
+.badge-accent {
+  background-color: var(--accent);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.modal-event-meta {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+}
+
+.modal-form-spacing {
+  margin-top: 1.25rem;
+}
+
+.confirm-icon-circle {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-full);
+  background-color: #ecfdf5;
+  color: #059669;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+.confirm-title {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.confirm-lead {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin-top: 0.5rem;
+}
+
+.confirm-summary {
+  margin-top: 1rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  background-color: var(--secondary);
+  padding: 1rem;
+  text-align: left;
+}
+
+.confirm-event-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.confirm-event-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-top: 0.25rem;
+}
+
+.confirm-event-instructor {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+}
+
+.confirm-event-datetime {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 0.25rem;
+}
+
+.confirm-note {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-top: 1rem;
+}
+
+.confirm-note strong {
+  color: var(--foreground);
+}
+
+.confirm-ok-btn {
+  margin-top: 1.5rem;
+  padding-inline: 2rem;
+}
+
+/* Estado de éxito del botón compartir (inyectado por JS) */
+.share-success-icon {
+  color: #047857;
+}
+
+.share-success-text {
+  color: #047857;
+  font-weight: 700;
 }

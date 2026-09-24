@@ -19,6 +19,10 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel=apple-touch-icon href="images/favicon.svg">
 
+  <!-- Material Symbols Rounded (Google Fonts) -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..700,0..1,0&display=swap">
+
   <!-- Hoja de estilos y Script -->
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
@@ -50,18 +54,9 @@
         <a href="#join" class="btn btn-primary header-join-btn">Join</a>
         <button type="button" id="mobile-toggle" class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
           <!-- Icono de hamburguesa -->
-          <svg id="icon-hamburger" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" fill="none">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+          <span id="icon-hamburger" class="material-symbols-rounded" aria-hidden="true">menu</span>
           <!-- Icono de cerrar -->
-          <svg id="icon-close" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" fill="none" style="display: none;">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
+          <span id="icon-close" class="material-symbols-rounded" aria-hidden="true">close</span>
         </button>
       </div>
     </div>
@@ -76,7 +71,7 @@
         <a href="#ecosystem" class="mobile-nav-link">Ecosystem</a>
         <a href="#impact" class="mobile-nav-link">Impact Areas</a>
         <a href="#events" class="mobile-nav-link">Events</a>
-        <a href="#join" class="btn btn-primary" style="margin-top: 0.75rem;">Join the Network</a>
+        <a href="#join" class="btn btn-primary mobile-nav-cta">Join the Network</a>
       </nav>
     </div>
   </header>
@@ -120,11 +115,7 @@
             <div class="hero-actions">
               <a href="#join" class="btn btn-primary btn-lg">
                 Join the Network
-                <svg viewBox="0 0 24 24" class="btn-icon" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
+                <span class="material-symbols-rounded btn-icon" aria-hidden="true">arrow_forward</span>
               </a>
               <a href="#how" class="btn btn-ghost btn-lg">
                 See how it works
@@ -145,21 +136,15 @@
     </section>
 
     <!-- ==================== SECCIÓN EL DESAFÍO ==================== -->
-    <section id="about" style="padding-block: 2.5rem;">
-      <div class="rough-band" style="background-color: var(--primary);">
+    <section id="about" class="band-section">
+      <div class="rough-band rough-band--primary">
         <!-- Borde superior rasgado -->
         <div class="rough-band-top"></div>
 
         <div class="container challenge-inner">
           <div class="reveal">
             <div class="challenge-icon-box">
-              <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
+              <span class="material-symbols-rounded" aria-hidden="true">diversity_3</span>
             </div>
           </div>
 
@@ -185,7 +170,7 @@
     <section id="why" class="section-py">
       <div class="container">
         <div class="reveal text-center">
-          <p class="eyebrow" style="justify-content: center;">Why NestX?</p>
+          <p class="eyebrow eyebrow--center">Why NestX?</p>
           <h2 class="section-title">Why Join the Network?</h2>
         </div>
 
@@ -194,13 +179,7 @@
           <div class="reveal" data-delay="0">
             <div class="why-item">
               <div class="why-icon-box">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">group</span>
               </div>
               <h3 class="why-item-title">Connect</h3>
               <p class="why-item-body">
@@ -214,13 +193,7 @@
           <div class="reveal" data-delay="90">
             <div class="why-item">
               <div class="why-icon-box">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m11 17 2 2a1 1 0 0 0 1.42 0l4.24-4.24a1 1 0 0 0 0-1.42l-2-2"></path>
-                  <path d="m17 7-2-2a1 1 0 0 0-1.42 0L9.34 9.24a1 1 0 0 0 0 1.42l2 2"></path>
-                  <path d="M2 13v-1a2 2 0 0 1 2-2h4l4 4-2 2H4a2 2 0 0 1-2-2Z"></path>
-                  <path d="M22 11v1a2 2 0 0 1-2 2h-4l-4-4 2-2h6a2 2 0 0 1 2 2Z"></path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">handshake</span>
               </div>
               <h3 class="why-item-title">Collaborate</h3>
               <p class="why-item-body">
@@ -234,11 +207,7 @@
           <div class="reveal" data-delay="180">
             <div class="why-item">
               <div class="why-icon-box">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">share</span>
               </div>
               <h3 class="why-item-title">Share</h3>
               <p class="why-item-body">
@@ -251,15 +220,7 @@
           <div class="reveal" data-delay="270">
             <div class="why-item">
               <div class="why-icon-box">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
-                  </path>
-                  <path
-                    d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66">
-                  </path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">favorite</span>
               </div>
               <h3 class="why-item-title">Create Impact</h3>
               <p class="why-item-body">
@@ -278,7 +239,7 @@
       <div class="rough-band-top"></div>
       <div class="container">
         <div class="reveal text-center">
-          <p class="eyebrow" style="justify-content: center;">Who It's For</p>
+          <p class="eyebrow eyebrow--center">Who It's For</p>
           <h2 class="section-title">A Network Designed for Every Innovator</h2>
         </div>
 
@@ -287,15 +248,7 @@
           <div class="reveal" data-delay="0">
             <article class="who-card">
               <div class="who-icon-box">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="3" y1="22" x2="21" y2="22"></line>
-                  <line x1="6" y1="18" x2="6" y2="11"></line>
-                  <line x1="10" y1="18" x2="10" y2="11"></line>
-                  <line x1="14" y1="18" x2="14" y2="11"></line>
-                  <line x1="18" y1="18" x2="18" y2="11"></line>
-                  <polygon points="12 2 20 7 4 7"></polygon>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">account_balance</span>
               </div>
               <h3 class="who-card-title">Universities</h3>
               <p class="who-card-body">
@@ -309,11 +262,7 @@
           <div class="reveal" data-delay="90">
             <article class="who-card">
               <div class="who-icon-box">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">school</span>
               </div>
               <h3 class="who-card-title">Faculty</h3>
               <p class="who-card-body">
@@ -327,11 +276,7 @@
           <div class="reveal" data-delay="180">
             <article class="who-card">
               <div class="who-icon-box">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">person</span>
               </div>
               <h3 class="who-card-title">Students</h3>
               <p class="who-card-body">
@@ -345,11 +290,7 @@
           <div class="reveal" data-delay="270">
             <article class="who-card">
               <div class="who-icon-box">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">factory</span>
               </div>
               <h3 class="who-card-title">Organizations & Industry</h3>
               <p class="who-card-body">
@@ -360,7 +301,7 @@
           </div>
         </div>
       </div>
-      <!-- Borde superior rasgado -->
+      <!-- Borde inferior rasgado -->
       <div class="rough-band-bottom"></div>
     </section>
 
@@ -371,8 +312,8 @@
         <div id="impact">
           <div class="reveal">
             <p class="eyebrow">Impact Areas</p>
-            <h2 class="section-title" style="font-size: 2rem;">Innovation Across Key Domains</h2>
-            <p class="section-subtitle" style="font-size: 0.875rem;">
+            <h2 class="section-title section-title--md">Innovation Across Key Domains</h2>
+            <p class="section-subtitle section-subtitle--sm">
               We foster innovation across the areas that matter most to our mission.
             </p>
           </div>
@@ -382,16 +323,7 @@
             <div class="reveal" data-delay="0">
               <div class="impact-card">
                 <div class="impact-icon-box">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z">
-                    </path>
-                    <path
-                      d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z">
-                    </path>
-                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
-                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
-                  </svg>
+                  <span class="material-symbols-rounded" aria-hidden="true">rocket_launch</span>
                 </div>
                 <span class="impact-card-label">Entrepreneurship</span>
               </div>
@@ -401,15 +333,7 @@
             <div class="reveal" data-delay="70">
               <div class="impact-card">
                 <div class="impact-icon-box">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M6 18h8"></path>
-                    <path d="M3 22h18"></path>
-                    <path d="M14 22a7 7 0 1 0 0-14h-1"></path>
-                    <path d="M9 14h2"></path>
-                    <path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"></path>
-                    <path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"></path>
-                  </svg>
+                  <span class="material-symbols-rounded" aria-hidden="true">biotech</span>
                 </div>
                 <span class="impact-card-label">Research</span>
               </div>
@@ -419,12 +343,7 @@
             <div class="reveal" data-delay="140">
               <div class="impact-card">
                 <div class="impact-icon-box">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                      d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16">
-                    </path>
-                  </svg>
+                  <span class="material-symbols-rounded" aria-hidden="true">computer</span>
                 </div>
                 <span class="impact-card-label">Technology</span>
               </div>
@@ -434,13 +353,7 @@
             <div class="reveal" data-delay="210">
               <div class="impact-card">
                 <div class="impact-icon-box">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                  </svg>
+                  <span class="material-symbols-rounded" aria-hidden="true">groups</span>
                 </div>
                 <span class="impact-card-label">Social Innovation</span>
               </div>
@@ -450,11 +363,7 @@
             <div class="reveal" data-delay="280">
               <div class="impact-card">
                 <div class="impact-icon-box">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                  </svg>
+                  <span class="material-symbols-rounded" aria-hidden="true">menu_book</span>
                 </div>
                 <span class="impact-card-label">Education</span>
               </div>
@@ -464,11 +373,7 @@
             <div class="reveal" data-delay="350">
               <div class="impact-card">
                 <div class="impact-icon-box">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
-                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
-                  </svg>
+                  <span class="material-symbols-rounded" aria-hidden="true">eco</span>
                 </div>
                 <span class="impact-card-label">Sustainability</span>
               </div>
@@ -480,8 +385,8 @@
         <div id="how">
           <div class="reveal">
             <p class="eyebrow">How It Works</p>
-            <h2 class="section-title" style="font-size: 2rem;">Connecting Ideas Across Borders</h2>
-            <p class="section-subtitle" style="font-size: 0.875rem;">
+            <h2 class="section-title section-title--md">Connecting Ideas Across Borders</h2>
+            <p class="section-subtitle section-subtitle--sm">
               Four simple steps turn connection into lasting impact.
             </p>
           </div>
@@ -549,16 +454,10 @@
     </section>
 
     <!-- ==================== QUÉ HACE A NESTX DIFERENTE ==================== -->
-    <section style="padding-block: 2.5rem;">
-      <div class="rough-band" style="background-color: var(--foreground);">
-        <!-- SVG borde superior rasgado -->
-        <svg aria-hidden="true" viewBox="0 0 1200 32" preserveAspectRatio="none" class="rough-band-top"
-          style="fill: var(--foreground);">
-          <path
-            d="M0,32 L0,15 L48,8 L96,16 L144,6 L192,12 L240,18 L288,7 L336,14 L384,5 L432,11 L480,17 L528,7 L576,13 L624,8 L672,16 L720,5 L768,12 L816,18 L864,7 L912,14 L960,5 L1008,11 L1056,17 L1104,7 L1152,13 L1200,9 L1200,32 Z">
-          </path>
-        </svg>
-
+    <section class="band-section">
+      <div class="rough-band rough-band--dark">
+        <!-- Borde superior -->
+        <div class="rough-band-top"></div>
         <div class="container different-grid">
           <div class="reveal">
             <div class="different-media-box">
@@ -583,13 +482,8 @@
           </div>
         </div>
 
-        <!-- SVG borde inferior rasgado -->
-        <svg aria-hidden="true" viewBox="0 0 1200 28" preserveAspectRatio="none" class="rough-band-bottom"
-          style="fill: var(--foreground);">
-          <path
-            d="M0,0 L1200,0 L1200,17 L1152,24 L1104,16 L1056,22 L1008,14 L960,20 L912,12 L864,19 L816,25 L768,15 L720,21 L672,13 L624,20 L576,24 L528,14 L480,21 L432,12 L384,19 L336,25 L288,15 L240,21 L192,13 L144,20 L96,24 L48,14 L0,19 Z">
-          </path>
-        </svg>
+        <!-- borde inferior rasgado -->
+        <div class="rough-band-bottom"></div>
       </div>
     </section>
 
@@ -597,9 +491,9 @@
     <section id="ecosystem" class="section-py">
       <div class="container">
         <div class="reveal text-center">
-          <p class="eyebrow" style="justify-content: center;">The Ecosystem</p>
+          <p class="eyebrow eyebrow--center">The Ecosystem</p>
           <h2 class="section-title">What You'll Find Inside NestX</h2>
-          <p class="section-subtitle" style="margin-inline: auto;">
+          <p class="section-subtitle section-subtitle--center">
             A connected ecosystem of people, resources, and opportunities working toward shared impact.
           </p>
         </div>
@@ -609,13 +503,7 @@
           <div class="reveal" data-delay="0">
             <div class="ecosystem-item">
               <div class="ecosystem-icon-box">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                  </path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">public</span>
               </div>
               <span class="ecosystem-label">Global university connections</span>
             </div>
@@ -625,31 +513,17 @@
           <div class="reveal" data-delay="80">
             <div class="ecosystem-item">
               <div class="ecosystem-icon-box">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="9" y1="18" x2="15" y2="18"></line>
-                  <line x1="10" y1="22" x2="14" y2="22"></line>
-                  <path
-                    d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14">
-                  </path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">lightbulb</span>
               </div>
               <span class="ecosystem-label">Innovation collaborations</span>
             </div>
           </div>
-
+          ∫
           <!-- 3. Alianzas de investigación -->
           <div class="reveal" data-delay="160">
             <div class="ecosystem-item">
               <div class="ecosystem-icon-box">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10 2v7.31"></path>
-                  <path d="M14 9.3V1.99"></path>
-                  <path d="M8.5 2h7"></path>
-                  <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
-                  <path d="M5.52 16h12.96"></path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">science</span>
               </div>
               <span class="ecosystem-label">Research partnerships</span>
             </div>
@@ -659,11 +533,7 @@
           <div class="reveal" data-delay="0">
             <div class="ecosystem-item">
               <div class="ecosystem-icon-box">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">school</span>
               </div>
               <span class="ecosystem-label">Faculty expertise</span>
             </div>
@@ -673,13 +543,7 @@
           <div class="reveal" data-delay="80">
             <div class="ecosystem-item">
               <div class="ecosystem-icon-box">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">groups</span>
               </div>
               <span class="ecosystem-label">Student talent</span>
             </div>
@@ -689,16 +553,7 @@
           <div class="reveal" data-delay="160">
             <div class="ecosystem-item">
               <div class="ecosystem-icon-box">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z">
-                  </path>
-                  <path
-                    d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z">
-                  </path>
-                  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
-                  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">rocket_launch</span>
               </div>
               <span class="ecosystem-label">Entrepreneurship initiatives</span>
             </div>
@@ -708,20 +563,7 @@
           <div class="reveal" data-delay="0">
             <div class="ecosystem-item">
               <div class="ecosystem-icon-box">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
-                  <path d="M9 22v-4h6v4"></path>
-                  <path d="M8 6h.01"></path>
-                  <path d="M16 6h.01"></path>
-                  <path d="M12 6h.01"></path>
-                  <path d="M12 10h.01"></path>
-                  <path d="M12 14h.01"></path>
-                  <path d="M16 10h.01"></path>
-                  <path d="M16 14h.01"></path>
-                  <path d="M8 10h.01"></path>
-                  <path d="M8 14h.01"></path>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
               </div>
               <span class="ecosystem-label">Industry partnerships</span>
             </div>
@@ -731,14 +573,7 @@
           <div class="reveal" data-delay="80">
             <div class="ecosystem-item">
               <div class="ecosystem-icon-box">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="18" cy="5" r="3"></circle>
-                  <circle cx="6" cy="12" r="3"></circle>
-                  <circle cx="18" cy="19" r="3"></circle>
-                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">hub</span>
               </div>
               <span class="ecosystem-label">Shared innovation resources</span>
             </div>
@@ -748,11 +583,7 @@
           <div class="reveal" data-delay="160">
             <div class="ecosystem-item">
               <div class="ecosystem-icon-box">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
+                <span class="material-symbols-rounded" aria-hidden="true">location_on</span>
               </div>
               <span class="ecosystem-label">Regional & global opportunities</span>
             </div>
@@ -789,17 +620,17 @@
       <div class="events-ambient-glow-1" aria-hidden="true"></div>
       <div class="events-ambient-glow-2" aria-hidden="true"></div>
 
-      <div class="container" style="position: relative;">
+      <div class="container container--relative">
         <!-- Encabezado -->
         <div class="text-center">
           <div class="reveal">
-            <p class="eyebrow" style="justify-content: center;">NestX Events & Workshops</p>
+            <p class="eyebrow eyebrow--center">NestX Events & Workshops</p>
           </div>
           <div class="reveal" data-delay="80">
-            <h2 class="section-title" style="font-size: 2.25rem;">Learn, Connect, and Collaborate</h2>
+            <h2 class="section-title section-title--events">Learn, Connect, and Collaborate</h2>
           </div>
           <div class="reveal" data-delay="160">
-            <p class="section-subtitle" style="margin-inline: auto;">
+            <p class="section-subtitle section-subtitle--center">
               Interactive training spaces, masterclasses, and co-creation labs open to the entire community of partner
               universities.
             </p>
@@ -813,7 +644,7 @@
 
             <div class="featured-event-layout">
               <!-- Izquierda: Contenido -->
-              <div style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div class="featured-event-main">
                 <div>
                   <!-- Insignias -->
                   <div class="badge-row">
@@ -822,20 +653,12 @@
                       Featured Workshop
                     </span>
                     <span class="badge-tag">
-                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
-                        <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z">
-                        </path>
-                        <path d="M7 7h.01"></path>
-                      </svg>
+                      <span class="material-symbols-rounded icon--primary" aria-hidden="true"
+                       >label</span>
                       Hands-On Workshop
                     </span>
                     <span class="badge-spots">
-                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                      </svg>
+                      <span class="material-symbols-rounded" aria-hidden="true">group</span>
                       Limited to 50 participants
                     </span>
                   </div>
@@ -853,47 +676,25 @@
                   <!-- Destacados -->
                   <div class="highlights-container">
                     <h4 class="highlights-title">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
-                        <line x1="9" y1="18" x2="15" y2="18"></line>
-                        <line x1="10" y1="22" x2="14" y2="22"></line>
-                        <path
-                          d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14">
-                        </path>
-                      </svg>
+                      <span class="material-symbols-rounded icon--primary" aria-hidden="true"
+                       >lightbulb</span>
                       What you'll develop in this session:
                     </h4>
                     <ul class="highlights-grid">
                       <li class="highlight-item">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="highlight-icon">
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
+                        <span class="material-symbols-rounded highlight-icon" aria-hidden="true">task_alt</span>
                         <span>Empathy Mapping and strategic problem definition</span>
                       </li>
                       <li class="highlight-item">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="highlight-icon">
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
+                        <span class="material-symbols-rounded highlight-icon" aria-hidden="true">task_alt</span>
                         <span>Disruptive ideation techniques and university co-creation</span>
                       </li>
                       <li class="highlight-item">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="highlight-icon">
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
+                        <span class="material-symbols-rounded highlight-icon" aria-hidden="true">task_alt</span>
                         <span>Rapid prototyping and early idea validation</span>
                       </li>
                       <li class="highlight-item">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="highlight-icon">
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
+                        <span class="material-symbols-rounded highlight-icon" aria-hidden="true">task_alt</span>
                         <span>Building solutions oriented toward social impact</span>
                       </li>
                     </ul>
@@ -911,11 +712,7 @@
                 <!-- Información del instructor -->
                 <div class="instructor-preview-box">
                   <div class="instructor-avatar">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                    </svg>
+                    <span class="material-symbols-rounded" aria-hidden="true">school</span>
                   </div>
                   <div>
                     <p class="instructor-meta-eyebrow">Guest Instructor</p>
@@ -929,25 +726,19 @@
               <div class="event-sidebar-card">
                 <div>
                   <div
-                    style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+                    class="sidebar-head">
                     <span
-                      style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-foreground);">Date
+                      class="sidebar-head-label">Date
                       &amp; Format</span>
                     <span
-                      style="border-radius: var(--radius-sm); background-color: var(--accent); padding: 0.2rem 0.5rem; font-size: 0.75rem; font-weight: 700; color: var(--primary);">Upcoming</span>
+                      class="status-pill">Upcoming</span>
                   </div>
 
                   <div class="sidebar-meta-list">
                     <!-- Fecha -->
                     <div class="sidebar-meta-item">
                       <div class="sidebar-icon-box">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
-                          <line x1="16" y1="2" x2="16" y2="6"></line>
-                          <line x1="8" y1="2" x2="8" y2="6"></line>
-                          <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
+                        <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
                       </div>
                       <div>
                         <p class="sidebar-meta-label">Date</p>
@@ -958,11 +749,7 @@
                     <!-- Hora -->
                     <div class="sidebar-meta-item">
                       <div class="sidebar-icon-box">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
+                        <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
                       </div>
                       <div>
                         <p class="sidebar-meta-label">Time</p>
@@ -973,11 +760,7 @@
                     <!-- Formato -->
                     <div class="sidebar-meta-item">
                       <div class="sidebar-icon-box">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                          <rect width="14" height="14" x="1" y="5" rx="2" ry="2"></rect>
-                        </svg>
+                        <span class="material-symbols-rounded" aria-hidden="true">videocam</span>
                       </div>
                       <div>
                         <p class="sidebar-meta-label">Format</p>
@@ -986,7 +769,7 @@
                     </div>
 
                     <div class="sidebar-cert-note">
-                      <strong style="color: var(--foreground);">Certificate of Participation:</strong> A digital
+                      <strong>Certificate of Participation:</strong> A digital
                       certificate issued by the NestX Network will be awarded to all attendees.
                     </div>
                   </div>
@@ -994,25 +777,14 @@
 
                 <!-- Acciones -->
                 <div class="sidebar-actions">
-                  <button type="button" class="btn btn-primary btn-lg" style="width: 100%;"
+                  <button type="button" class="btn btn-primary btn-lg btn--full"
                     data-open-event="design-thinking">
                     <span>Register for Workshop</span>
-                    <svg viewBox="0 0 24 24" class="btn-icon" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
+                    <span class="material-symbols-rounded btn-icon" aria-hidden="true">arrow_forward</span>
                   </button>
 
                   <button type="button" id="btn-share-event" class="btn-share">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="18" cy="5" r="3"></circle>
-                      <circle cx="6" cy="12" r="3"></circle>
-                      <circle cx="18" cy="19" r="3"></circle>
-                      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                    </svg>
+                    <span class="material-symbols-rounded" aria-hidden="true">share</span>
                     <span>Share announcement</span>
                   </button>
                 </div>
@@ -1032,9 +804,9 @@
           <div class="reveal" data-delay="0">
             <div class="secondary-event-card">
               <div>
-                <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="secondary-event-top">
                   <span class="badge-tag">Academic Symposium</span>
-                  <span style="font-size: 0.75rem; color: var(--muted-foreground);">December 4, 2026</span>
+                  <span class="event-meta">December 4, 2026</span>
                 </div>
                 <h4 class="secondary-event-card-title">Research &amp; Applied Innovation Symposium 2026</h4>
                 <p class="secondary-event-card-desc">
@@ -1042,18 +814,14 @@
                   digital education, and technology transfer.
                 </p>
                 <div class="secondary-event-speaker">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
+                  <span class="material-symbols-rounded icon--primary" aria-hidden="true">person</span>
                   <span>NestX Research Panel</span>
                 </div>
               </div>
               <div class="secondary-event-card-footer">
-                <span style="font-size: 0.75rem; color: var(--muted-foreground);">Hybrid Broadcast / Global
+                <span class="event-meta">Hybrid Broadcast / Global
                   Streaming</span>
-                <button type="button" class="btn btn-ghost btn-sm" style="color: var(--primary); font-weight: 700;"
+                <button type="button" class="btn btn-ghost btn-sm btn--primary-text"
                   data-open-event="research-symposium">
                   View details
                 </button>
@@ -1065,9 +833,9 @@
           <div class="reveal" data-delay="100">
             <div class="secondary-event-card">
               <div>
-                <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="secondary-event-top">
                   <span class="badge-tag">Demo Day &amp; Incubation</span>
-                  <span style="font-size: 0.75rem; color: var(--muted-foreground);">December 15, 2026</span>
+                  <span class="event-meta">December 15, 2026</span>
                 </div>
                 <h4 class="secondary-event-card-title">NestX Demo Day: University Startup Showcase</h4>
                 <p class="secondary-event-card-desc">
@@ -1075,17 +843,13 @@
                   partners.
                 </p>
                 <div class="secondary-event-speaker">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
+                  <span class="material-symbols-rounded icon--primary" aria-hidden="true">groups</span>
                   <span>Incubator Network Mentors</span>
                 </div>
               </div>
               <div class="secondary-event-card-footer">
-                <span style="font-size: 0.75rem; color: var(--muted-foreground);">Live Online</span>
-                <button type="button" class="btn btn-ghost btn-sm" style="color: var(--primary); font-weight: 700;"
+                <span class="event-meta">Live Online</span>
+                <button type="button" class="btn btn-ghost btn-sm btn--primary-text"
                   data-open-event="venture-pitch">
                   View details
                 </button>
@@ -1123,14 +887,10 @@
                 we can build a more connected, innovative, and impactful future.
               </p>
             </div>
-            <div style="margin-top: 2rem;">
+            <div class="cta-banner-actions">
               <a href="#top" class="btn btn-white btn-lg">
                 Become Part of NestX
-                <svg viewBox="0 0 24 24" class="btn-icon" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
+                <span class="material-symbols-rounded btn-icon" aria-hidden="true">arrow_forward</span>
               </a>
             </div>
           </div>
@@ -1141,8 +901,8 @@
           <div class="newsletter-card">
             <div>
               <p class="eyebrow">Stay Updated</p>
-              <h2 class="section-title" style="font-size: 1.75rem;">Keep in the Loop</h2>
-              <p class="section-subtitle" style="font-size: 0.875rem;">
+              <h2 class="section-title section-title--sm">Keep in the Loop</h2>
+              <p class="section-subtitle section-subtitle--sm">
                 Subscribe to our newsletter for updates, opportunities, and stories from the NestX community.
               </p>
             </div>
@@ -1150,24 +910,17 @@
             <!-- Formulario de suscripción -->
             <form id="newsletter-form" class="newsletter-form">
               <div class="input-with-icon-wrapper">
-                <svg viewBox="0 0 24 24" class="input-icon" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                </svg>
+                <span class="material-symbols-rounded input-icon" aria-hidden="true">mail</span>
                 <input type="email" id="newsletter-email" class="form-input-round" placeholder="Email address" required>
               </div>
-              <button type="submit" class="btn btn-primary btn-lg" style="white-space: nowrap;">
+              <button type="submit" class="btn btn-primary btn-lg btn--nowrap">
                 Subscribe
               </button>
             </form>
 
             <!-- Estado de éxito -->
-            <div id="newsletter-success" class="newsletter-success-box" style="display: none;">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
+            <div id="newsletter-success" class="newsletter-success-box">
+              <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
               <span>Thanks for subscribing! We'll be in touch soon.</span>
             </div>
           </div>
@@ -1180,7 +933,7 @@
       <div class="partners-ambient-light" aria-hidden="true"></div>
       <div class="partners-grid-pattern" aria-hidden="true"></div>
 
-      <div class="container" style="position: relative;">
+      <div class="container container--relative">
         <div class="reveal text-center">
           <span class="partners-badge">Global Alliance</span>
           <h2 class="partners-title">Partner universities</h2>
@@ -1255,36 +1008,16 @@
         <!-- Iconos sociales -->
         <div class="social-links">
           <a href="#" aria-label="Website" class="social-btn">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-              </path>
-            </svg>
+            <span class="material-symbols-rounded" aria-hidden="true">language</span>
           </a>
           <a href="#" aria-label="X" class="social-btn">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
+            <span class="material-symbols-rounded" aria-hidden="true">send</span>
           </a>
           <a href="#" aria-label="LinkedIn" class="social-btn">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
+            <span class="material-symbols-rounded" aria-hidden="true">work</span>
           </a>
           <a href="#" aria-label="Instagram" class="social-btn">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="4"></circle>
-              <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
-            </svg>
+            <span class="material-symbols-rounded" aria-hidden="true">photo_camera</span>
           </a>
         </div>
       </div>
@@ -1304,27 +1037,22 @@
     <div class="modal-dialog">
       <!-- Botón de cerrar -->
       <button type="button" class="modal-close-btn" data-close-modal aria-label="Close modal">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
+        <span class="material-symbols-rounded" aria-hidden="true">close</span>
       </button>
 
       <!-- Vista de formulario -->
-      <div id="modal-form-view">
-        <span id="modal-event-category" class="badge-tag"
-          style="background-color: var(--accent); color: var(--primary); font-weight: 700;">
+      <div id="modal-form-view" class="modal-form-view">
+        <span id="modal-event-category" class="badge-tag badge-accent">
           Event Registration
         </span>
-        <h3 id="modal-event-title" class="section-title" style="font-size: 1.5rem; margin-top: 0.5rem;">
+        <h3 id="modal-event-title" class="section-title section-title--modal">
           Design Thinking: From Empathy to High-Impact Solutions
         </h3>
-        <p id="modal-event-meta" style="font-size: 0.75rem; color: var(--muted-foreground); margin-top: 0.25rem;">
+        <p id="modal-event-meta" class="modal-event-meta">
           Prof. Allen Zapién · November 20, 2026
         </p>
 
-        <form id="event-reg-form" style="margin-top: 1.25rem;">
+        <form id="event-reg-form" class="modal-form-spacing">
           <div class="modal-form-group">
             <label for="reg-name" class="modal-label">Full name *</label>
             <input type="text" id="reg-name" class="modal-input" placeholder="e.g. Ana Martinez" required>
@@ -1370,41 +1098,37 @@
       </div>
 
       <!-- Vista de confirmación -->
-      <div id="modal-confirm-view" style="display: none; padding-block: 1rem; text-align: center;">
+      <div id="modal-confirm-view" class="modal-confirm-view">
         <div
-          style="width: 3.5rem; height: 3.5rem; border-radius: var(--radius-full); background-color: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; margin-inline: auto;">
-          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
+          class="confirm-icon-circle">
+          <span class="material-symbols-rounded modal-confirm-icon" aria-hidden="true">check_circle</span>
         </div>
-        <h3 class="section-title" style="font-size: 1.5rem; margin-top: 1rem;">Registration Confirmed!</h3>
-        <p style="font-size: 0.875rem; color: var(--muted-foreground); margin-top: 0.5rem;">
+        <h3 class="section-title confirm-title">Registration Confirmed!</h3>
+        <p class="confirm-lead">
           Your spot has been reserved for the event:
         </p>
 
         <div
-          style="margin-top: 1rem; border-radius: var(--radius-xl); border: 1px solid var(--border); background-color: var(--secondary); padding: 1rem; text-align: left;">
-          <p id="confirm-event-category" style="font-size: 0.75rem; font-weight: 700; color: var(--primary);">Hands-On
+          class="confirm-summary">
+          <p id="confirm-event-category" class="confirm-event-category">Hands-On
             Workshop</p>
           <p id="confirm-event-title"
-            style="font-size: 1rem; font-weight: 700; color: var(--foreground); margin-top: 0.25rem;">Design Thinking:
+            class="confirm-event-title">Design Thinking:
             From Empathy to High-Impact Solutions</p>
           <p id="confirm-event-instructor"
-            style="font-size: 0.75rem; color: var(--muted-foreground); margin-top: 0.25rem;">Instructor: Prof. Allen
+            class="confirm-event-instructor">Instructor: Prof. Allen
             Zapién</p>
           <p id="confirm-event-datetime"
-            style="font-size: 0.75rem; font-weight: 600; color: var(--foreground); margin-top: 0.25rem;">November 20,
+            class="confirm-event-datetime">November 20,
             2026 — 4:00 PM - 6:30 PM CST</p>
         </div>
 
-        <p style="font-size: 0.75rem; color: var(--muted-foreground); margin-top: 1rem;">
+        <p class="confirm-note">
           A confirmation email with access links has been sent to <strong id="confirm-user-email"
-            style="color: var(--foreground);"></strong>.
+           ></strong>.
         </p>
 
-        <button type="button" class="btn btn-primary" style="margin-top: 1.5rem; padding-inline: 2rem;"
+        <button type="button" class="btn btn-primary confirm-ok-btn"
           data-close-modal>
           Got it
         </button>

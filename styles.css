@@ -756,7 +756,6 @@ ol {
 
 /* --- 12. Sección Para Quién Es (Who) --- */
 .who-section {
-  border-block: 1px solid var(--border);
   background-color: rgba(244, 242, 248, 0.6);
 }
 
@@ -1099,8 +1098,28 @@ ol {
 }
 
 /* --- 16. Sección Visión --- */
+
+section.section-py.vision-section {
+  padding-block: 1rem;
+  position: relative;
+  margin: 6rem auto;
+}
+
+section.section-py.vision-section>div.rough-band-top {
+  background: url(images/bkgGrayTop02.gif) center bottom no-repeat;
+  background-size: cover;
+  height: 115px;
+  width: 100%;
+}
+
+section.section-py.vision-section>div.rough-band-bottom {
+  background: url(images/bkgGrayBot02.gif) center top no-repeat;
+  background-size: cover;
+  height: 115px;
+  width: 100%;
+}
+
 .vision-section {
-  border-block: 1px solid var(--border);
   background-color: rgba(244, 242, 248, 0.6);
 }
 
@@ -1137,7 +1156,6 @@ ol {
 .events-section {
   position: relative;
   overflow: hidden;
-  border-top: 1px solid var(--border);
   background: linear-gradient(to bottom, rgba(244, 242, 248, 0.4), var(--background) 40%, var(--background));
 }
 
@@ -2203,22 +2221,69 @@ body.no-scroll {
 }
 
 /* Retardos de revelado (antes transitionDelay inline desde data-delay) */
-.reveal-delay-70 { transition-delay: 70ms; }
-.reveal-delay-80 { transition-delay: 80ms; }
-.reveal-delay-90 { transition-delay: 90ms; }
-.reveal-delay-100 { transition-delay: 100ms; }
-.reveal-delay-120 { transition-delay: 120ms; }
-.reveal-delay-140 { transition-delay: 140ms; }
-.reveal-delay-160 { transition-delay: 160ms; }
-.reveal-delay-180 { transition-delay: 180ms; }
-.reveal-delay-200 { transition-delay: 200ms; }
-.reveal-delay-210 { transition-delay: 210ms; }
-.reveal-delay-220 { transition-delay: 220ms; }
-.reveal-delay-250 { transition-delay: 250ms; }
-.reveal-delay-270 { transition-delay: 270ms; }
-.reveal-delay-280 { transition-delay: 280ms; }
-.reveal-delay-300 { transition-delay: 300ms; }
-.reveal-delay-350 { transition-delay: 350ms; }
+.reveal-delay-70 {
+  transition-delay: 70ms;
+}
+
+.reveal-delay-80 {
+  transition-delay: 80ms;
+}
+
+.reveal-delay-90 {
+  transition-delay: 90ms;
+}
+
+.reveal-delay-100 {
+  transition-delay: 100ms;
+}
+
+.reveal-delay-120 {
+  transition-delay: 120ms;
+}
+
+.reveal-delay-140 {
+  transition-delay: 140ms;
+}
+
+.reveal-delay-160 {
+  transition-delay: 160ms;
+}
+
+.reveal-delay-180 {
+  transition-delay: 180ms;
+}
+
+.reveal-delay-200 {
+  transition-delay: 200ms;
+}
+
+.reveal-delay-210 {
+  transition-delay: 210ms;
+}
+
+.reveal-delay-220 {
+  transition-delay: 220ms;
+}
+
+.reveal-delay-250 {
+  transition-delay: 250ms;
+}
+
+.reveal-delay-270 {
+  transition-delay: 270ms;
+}
+
+.reveal-delay-280 {
+  transition-delay: 280ms;
+}
+
+.reveal-delay-300 {
+  transition-delay: 300ms;
+}
+
+.reveal-delay-350 {
+  transition-delay: 350ms;
+}
 
 /* Secciones de banda rasgada */
 .band-section {

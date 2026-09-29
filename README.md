@@ -13,28 +13,38 @@ Versión **100% pura y estándar (Vanilla)** de la plataforma web de **NestX**, 
   - Layouts completamente responsivos utilizando CSS Grid y Flexbox.
   - Efectos visuales de papel rasgado (*RoughBand*) renderizados con trazados SVG vectoriales nativos.
   - Animaciones de revelado al hacer scroll (`.reveal`) respetando las preferencias de accesibilidad (`prefers-reduced-motion`).
+  - Microinteracciones y transiciones fluidas de entrada en modales y componentes (`modalViewFadeIn`).
 - **JavaScript ES6+ Nativo:**
   - Barra de navegación pegajosa (*sticky header*) con desenfoque de fondo y borde dinámico según el scroll.
   - Menú móvil colapsable con soporte para tecla `Escape` y cierre automático al interactuar.
   - Animaciones de entrada activadas mediante la API nativa `IntersectionObserver`.
-  - Modal accesible de registro para workshops con validación y pantalla de confirmación.
+  - **Modal de Registro de Dos Pasos para Eventos:**
+    - **Paso 1 (Vista de Detalles):** Indicador de pasos (*Stepper* interactivo), badge de categoría, título, descripción completa, cuadrícula de metadatos con iconos (Fecha & Hora, Ponente/Rol, Formato/Modalidad, Cupos/Acceso) y nota de constancia/certificado digital.
+    - **Paso 2 (Vista de Formulario):** Navegación de retorno (*Back to event details*), pastilla resumen con el evento seleccionado, campos de registro validados (nombre, correo institucional, universidad, rol) y atajos de regreso.
+    - **Paso 3 (Confirmación):** Pantalla de éxito con los datos confirmados del evento y correo de confirmación.
+    - Gestión de foco por teclado, bloqueo de scroll en el `body` y cierre con tecla `Escape` o clic en el fondo.
   - Funcionalidad de copiado al portapapeles con feedback temporal en el botón para compartir eventos.
   - Formulario de suscripción al boletín con retroalimentación visual interactiva.
-- **Iconografía SVG Inline:** Iconos limpios e integrados directamente en el código para máxima velocidad de renderizado y cero peticiones de red adicionales.
+  - Modal secundario para postularse a la red (*Join the Network*).
+- **Iconografía e Identidad Visual:** Iconos Google Material Symbols Rounded y gráficos SVG nativos para máxima velocidad de renderizado, consistencia y cero dependencias de bibliotecas pesadas.
 
 ---
 
 ## Estructura de Archivos
 
 ```plaintext
-nestxV0/
-├── index.html       # Estructura y contenido de toda la plataforma
-├── styles.css       # Hoja de estilos pura (tokens, layout, componentes)
-├── script.js        # Lógica interactiva en JavaScript vainilla
-├── images/          # Recursos gráficos y logotipos de universidades
+NestX/
+├── index.html            # Landing page principal y modales interactivos
+├── faq.html              # Centro de Preguntas Frecuentes (FAQ)
+├── privacy-policy.html   # Políticas de Privacidad y Tratamiento de Datos
+├── styles.css            # Hoja de estilos pura (tokens, layout, componentes y modales)
+├── script.js             # Lógica interactiva en JavaScript vainilla (directorio de eventos y modales)
+├── images/               # Recursos gráficos, mapas e identidades universitarias
 │   ├── hero-globe.png
 │   ├── network-map.png
 │   ├── vision-collaboration.png
+│   ├── favicon.svg
+│   ├── NestX.svg
 │   └── universidades/
 │       ├── UM.png
 │       ├── UNAC.webp
@@ -42,7 +52,7 @@ nestxV0/
 │       ├── UNADECA.png
 │       ├── UNAV.png
 │       └── UPEU.png
-└── README.md        # Documentación de la rama Vanilla
+└── README.md             # Documentación del proyecto
 ```
 
 ---
@@ -70,9 +80,9 @@ npx serve .
 
 ---
 
-## Secciones Incluidas
+## Secciones y Páginas Incluidas
 
-1. **Header & Navegación:** Identidad NestX y navegación fluida entre anclas.
+1. **Header & Navegación:** Identidad NestX y navegación fluida entre anclas y páginas secundarias.
 2. **Hero Section:** Titular principal, propuesta de valor, accesos directos y globo terráqueo conectado.
 3. **The Challenge:** Banda de contraste con bordes rasgados y planteamiento del problema.
 4. **Why NestX:** Los 4 pilares: Conectar, Colaborar, Compartir y Crear Impacto.
@@ -81,7 +91,10 @@ npx serve .
 7. **What Makes NestX Different:** Manifiesto y mapa mundial de nodos.
 8. **Ecosystem:** 9 elementos de valor y recursos compartidos de la red.
 9. **Vision:** Mensaje inspirador sobre el futuro de la educación colaborativa.
-10. **Events & Workshops:** Taller destacado ("Design Thinking" con el Prof. Allen Zapién), eventos secundarios, modal de registro y botón para compartir.
+10. **Events & Workshops:** Taller destacado (*Design Thinking* con el Prof. Allen Zapién), eventos secundarios, **modal de dos pasos (Detalles completos $\rightarrow$ Formulario de registro $\rightarrow$ Confirmación)** y botón para compartir con copia al portapapeles.
 11. **Call to Action & Newsletter:** Registro a la red y suscripción al boletín.
 12. **Partner Universities:** Alianza global con las universidades adventistas asociadas.
-13. **Footer:** Enlaces institucionales, redes sociales y créditos.
+13. **Footer:** Enlaces institucionales, redes sociales y navegación complementaria.
+14. **Páginas Secundarias:**
+    - [faq.html](file:///Users/arkev/Documents/GitHub/NestX/faq.html): Preguntas frecuentes con acordeones interactivos y buscador/filtros.
+    - [privacy-policy.html](file:///Users/arkev/Documents/GitHub/NestX/privacy-policy.html): Aviso de privacidad y gobernanza de datos de la red.

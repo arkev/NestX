@@ -2538,3 +2538,66 @@ body.no-scroll {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px var(--ring);
 }
+
+/* --- 26. Página de Privacy Policy --- */
+.policy-hero {
+  padding-bottom: 0;
+}
+
+.policy-hero-inner {
+  max-width: 48rem;
+}
+
+.policy-content {
+  padding-top: 2.5rem;
+}
+
+.policy-article {
+  max-width: 48rem;
+}
+
+.policy-article h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+  margin-top: 2.5rem;
+}
+
+.policy-article h2:first-child {
+  margin-top: 0;
+}
+
+.policy-article p {
+  margin-top: 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+.policy-article ul {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+.policy-article strong {
+  color: var(--foreground);
+}
+
+.policy-article a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.policy-back {
+  margin-top: 3rem;
+}

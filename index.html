@@ -1031,27 +1031,123 @@
         <span class="material-symbols-rounded" aria-hidden="true">close</span>
       </button>
 
-      <!-- Vista de formulario -->
-      <div id="modal-form-view" class="modal-form-view">
-        <span id="modal-event-category" class="badge-tag badge-accent">
-          Event Registration
-        </span>
-        <h3 id="modal-event-title" class="section-title section-title--modal">
-          Design Thinking: From Empathy to High-Impact Solutions
-        </h3>
-        <p id="modal-event-meta" class="modal-event-meta">
-          Prof. Allen Zapién · November 20, 2026
-        </p>
+      <!-- Stepper / Indicador de pasos -->
+      <div id="event-modal-stepper" class="modal-stepper" aria-label="Registration steps">
+        <button type="button" id="step-indicator-details" class="modal-step is-active" aria-label="Step 1: Event Details">
+          <span class="modal-step-number">1</span>
+          <span class="modal-step-label">Event Details</span>
+        </button>
+        <div id="modal-step-connector" class="modal-step-connector"></div>
+        <div id="step-indicator-form" class="modal-step" aria-label="Step 2: Registration">
+          <span class="modal-step-number">2</span>
+          <span class="modal-step-label">Registration</span>
+        </div>
+      </div>
+
+      <!-- ================= VISTA 1: DETALLES DEL EVENTO ================= -->
+      <div id="modal-details-view" class="modal-details-view">
+        <div class="modal-details-header">
+          <span id="modal-event-category" class="badge-tag badge-accent">
+            Hands-On Workshop
+          </span>
+          <h3 id="modal-event-title" class="section-title section-title--modal">
+            Design Thinking: From Empathy to High-Impact Solutions
+          </h3>
+          <p id="modal-event-desc" class="modal-event-desc">
+            An immersive and collaborative workshop designed for faculty, students, and researchers across the NestX network. Learn to apply the 5 phases of Design Thinking to tackle real educational and social challenges with human-centered solutions.
+          </p>
+        </div>
+
+        <div class="modal-details-grid">
+          <!-- Fecha y Hora -->
+          <div class="modal-detail-card">
+            <div class="modal-detail-icon">
+              <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+            </div>
+            <div class="modal-detail-content">
+              <span class="modal-detail-label">Date &amp; Time</span>
+              <p id="modal-event-date" class="modal-detail-value">November 20, 2026</p>
+              <p id="modal-event-time" class="modal-detail-sub">4:00 PM - 6:30 PM CST</p>
+            </div>
+          </div>
+
+          <!-- Ponente / Instructor -->
+          <div class="modal-detail-card">
+            <div class="modal-detail-icon">
+              <span class="material-symbols-rounded" aria-hidden="true">person</span>
+            </div>
+            <div class="modal-detail-content">
+              <span class="modal-detail-label">Speaker / Host</span>
+              <p id="modal-event-instructor" class="modal-detail-value">Prof. Allen Zapién</p>
+              <p id="modal-event-instructor-role" class="modal-detail-sub">Innovation Strategist &amp; Facilitator</p>
+            </div>
+          </div>
+
+          <!-- Formato / Modalidad -->
+          <div class="modal-detail-card">
+            <div class="modal-detail-icon">
+              <span class="material-symbols-rounded" aria-hidden="true">videocam</span>
+            </div>
+            <div class="modal-detail-content">
+              <span class="modal-detail-label">Format</span>
+              <p id="modal-event-modality" class="modal-detail-value">Live Zoom Workshop &amp; Practical Lab</p>
+            </div>
+          </div>
+
+          <!-- Acceso / Cupos -->
+          <div class="modal-detail-card">
+            <div class="modal-detail-icon">
+              <span class="material-symbols-rounded" aria-hidden="true">groups</span>
+            </div>
+            <div class="modal-detail-content">
+              <span class="modal-detail-label">Access &amp; Capacity</span>
+              <p id="modal-event-spots" class="modal-detail-value">Limited to 50 participants</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nota / Certificado -->
+        <div id="modal-event-cert" class="modal-cert-callout">
+          <span class="material-symbols-rounded icon--primary" aria-hidden="true">verified</span>
+          <span id="modal-event-cert-text">A digital certificate issued by the NestX Network will be awarded to all attendees.</span>
+        </div>
+
+        <!-- Acciones del Paso 1 -->
+        <div class="modal-footer modal-footer--space-between">
+          <button type="button" class="btn btn-ghost btn-sm" data-close-modal>Close</button>
+          <button type="button" id="btn-goto-register" class="btn btn-primary">
+            <span>Register</span>
+            <span class="material-symbols-rounded btn-icon" aria-hidden="true">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= VISTA 2: FORMULARIO DE REGISTRO ================= -->
+      <div id="modal-form-view" class="modal-form-view is-hidden">
+        <button type="button" id="btn-back-to-details" class="modal-back-btn">
+          <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+          <span>Back to event details</span>
+        </button>
+
+        <!-- Pastilla de resumen del evento seleccionado -->
+        <div class="modal-event-summary-pill">
+          <span class="material-symbols-rounded modal-event-summary-icon" aria-hidden="true">event</span>
+          <div class="modal-event-summary-text">
+            <span class="modal-event-summary-label">Registering for:</span>
+            <strong id="modal-form-event-name" class="modal-event-summary-title">Design Thinking: From Empathy to High-Impact Solutions</strong>
+            <span id="modal-form-event-meta" class="modal-event-summary-meta">November 20, 2026 · Live Zoom</span>
+          </div>
+        </div>
 
         <form id="event-reg-form" class="modal-form-spacing">
           <div class="modal-form-group">
             <label for="reg-name" class="modal-label">Full name *</label>
-            <input type="text" id="reg-name" class="modal-input" placeholder="e.g. Ana Martinez" required>
+            <input type="text" id="reg-name" class="modal-input" placeholder="e.g. Ana Martinez" required autocomplete="name">
           </div>
 
           <div class="modal-form-group">
             <label for="reg-email" class="modal-label">Institutional email *</label>
-            <input type="email" id="reg-email" class="modal-input" placeholder="your.email@university.edu" required>
+            <input type="email" id="reg-email" class="modal-input" placeholder="your.email@university.edu" required autocomplete="email">
           </div>
 
           <div class="modal-grid-2 modal-form-group">
@@ -1081,9 +1177,12 @@
             </div>
           </div>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-ghost btn-sm" data-close-modal>Cancel</button>
-            <button type="submit" class="btn btn-primary">Complete Registration</button>
+          <div class="modal-footer modal-footer--space-between">
+            <button type="button" class="btn btn-ghost btn-sm" id="btn-cancel-to-details">Back</button>
+            <button type="submit" class="btn btn-primary">
+              <span>Complete Registration</span>
+              <span class="material-symbols-rounded btn-icon" aria-hidden="true">check</span>
+            </button>
           </div>
         </form>
       </div>

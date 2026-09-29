@@ -51,7 +51,7 @@
 
       <!-- Acciones del encabezado -->
       <div class="header-actions">
-        <a href="#join" class="btn btn-primary header-join-btn">Join</a>
+        <a href="#join" class="btn btn-primary header-join-btn" data-open-join>Join</a>
         <button type="button" id="mobile-toggle" class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
           <!-- Icono de hamburguesa -->
           <span id="icon-hamburger" class="material-symbols-rounded" aria-hidden="true">menu</span>
@@ -71,7 +71,7 @@
         <a href="#ecosystem" class="mobile-nav-link">Ecosystem</a>
         <a href="#impact" class="mobile-nav-link">Impact Areas</a>
         <a href="#events" class="mobile-nav-link">Events</a>
-        <a href="#join" class="btn btn-primary mobile-nav-cta">Join the Network</a>
+        <a href="#join" class="btn btn-primary mobile-nav-cta" data-open-join>Join the Network</a>
       </nav>
     </div>
   </header>
@@ -113,7 +113,7 @@
 
           <div class="reveal" data-delay="300">
             <div class="hero-actions">
-              <a href="#join" class="btn btn-primary btn-lg">
+              <a href="#join" class="btn btn-primary btn-lg" data-open-join>
                 Join the Network
                 <span class="material-symbols-rounded btn-icon" aria-hidden="true">arrow_forward</span>
               </a>
@@ -883,7 +883,7 @@
               </p>
             </div>
             <div class="cta-banner-actions">
-              <a href="#top" class="btn btn-white btn-lg">
+              <a href="#top" class="btn btn-white btn-lg" data-open-join>
                 Become Part of NestX
                 <span class="material-symbols-rounded btn-icon" aria-hidden="true">arrow_forward</span>
               </a>
@@ -1019,7 +1019,7 @@
       <nav class="footer-nav" aria-label="Footer Navigation">
         <a href="#" class="footer-nav-link">Privacy Policy</a>
         <a href="#" class="footer-nav-link">FAQ</a>
-        <a href="#" class="footer-nav-link">Contact</a>
+        <a href="#" class="footer-nav-link" data-open-join>Contact</a>
       </nav>
     </div>
   </footer>
@@ -1115,6 +1115,117 @@
         </p>
 
         <button type="button" class="btn btn-primary confirm-ok-btn" data-close-modal>
+          Got it
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL DE JOIN ==================== -->
+  <div id="join-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="join-modal-title">
+    <div class="modal-dialog">
+      <!-- Botón de cerrar -->
+      <button type="button" class="modal-close-btn" data-close-join aria-label="Close modal">
+        <span class="material-symbols-rounded" aria-hidden="true">close</span>
+      </button>
+
+      <!-- Vista de formulario -->
+      <div id="join-form-view" class="modal-form-view">
+        <h3 id="join-modal-title" class="section-title section-title--modal">
+          Join the Network
+        </h3>
+        <p class="modal-event-meta">
+          Tell us about you and your institution. We will get back to you soon.
+        </p>
+
+        <form id="join-form" class="modal-form-spacing">
+          <div class="modal-form-group">
+            <label for="join-name" class="modal-label">Name *</label>
+            <input type="text" id="join-name" class="modal-input" placeholder="e.g. Ana Martinez" required
+              autocomplete="name">
+          </div>
+
+          <div class="modal-form-group">
+            <label for="join-email" class="modal-label">Email *</label>
+            <input type="email" id="join-email" class="modal-input" placeholder="your.email@university.edu" required
+              autocomplete="email">
+          </div>
+
+          <div class="modal-form-group">
+            <label for="join-institution" class="modal-label">Institution / Organization *</label>
+            <input type="text" id="join-institution" class="modal-input" placeholder="e.g. Universidad de Montemorelos"
+              autocomplete="organization" required>
+          </div>
+
+          <div class="modal-form-group">
+            <label for="join-country" class="modal-label">Country *</label>
+            <select id="join-country" class="modal-select" autocomplete="country-name" required>
+              <option value="" selected>Select your country</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Australia">Australia</option>
+              <option value="Bolivia">Bolivia</option>
+              <option value="Brazil">Brazil</option>
+              <option value="Canada">Canada</option>
+              <option value="Chile">Chile</option>
+              <option value="Colombia">Colombia</option>
+              <option value="Costa Rica">Costa Rica</option>
+              <option value="Cuba">Cuba</option>
+              <option value="Dominican Republic">Dominican Republic</option>
+              <option value="Ecuador">Ecuador</option>
+              <option value="El Salvador">El Salvador</option>
+              <option value="France">France</option>
+              <option value="Germany">Germany</option>
+              <option value="Ghana">Ghana</option>
+              <option value="Guatemala">Guatemala</option>
+              <option value="Haiti">Haiti</option>
+              <option value="Honduras">Honduras</option>
+              <option value="India">India</option>
+              <option value="Italy">Italy</option>
+              <option value="Jamaica">Jamaica</option>
+              <option value="Japan">Japan</option>
+              <option value="Kenya">Kenya</option>
+              <option value="Mexico">Mexico</option>
+              <option value="Nicaragua">Nicaragua</option>
+              <option value="Nigeria">Nigeria</option>
+              <option value="Panama">Panama</option>
+              <option value="Peru">Peru</option>
+              <option value="Philippines">Philippines</option>
+              <option value="Portugal">Portugal</option>
+              <option value="Puerto Rico">Puerto Rico</option>
+              <option value="South Africa">South Africa</option>
+              <option value="South Korea">South Korea</option>
+              <option value="Spain">Spain</option>
+              <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="United States">United States</option>
+              <option value="Venezuela">Venezuela</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="modal-form-group">
+            <label for="join-message" class="modal-label">Message *</label>
+            <textarea id="join-message" class="modal-textarea" rows="4"
+              placeholder="How would you like to participate in NESTX?" required></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ghost btn-sm" data-close-join>Cancel</button>
+            <button type="submit" class="btn btn-primary">Send</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Vista de confirmación -->
+      <div id="join-confirm-view" class="modal-confirm-view">
+        <div class="confirm-icon-circle">
+          <span class="material-symbols-rounded modal-confirm-icon" aria-hidden="true">check_circle</span>
+        </div>
+        <h3 class="section-title confirm-title">Message Sent!</h3>
+        <p class="confirm-lead">
+          Thank you for contacting NESTX. We have received your message and will get back to you soon.
+        </p>
+        <button type="button" class="btn btn-primary confirm-ok-btn" data-close-join>
           Got it
         </button>
       </div>

@@ -223,7 +223,80 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 5. Botón para Compartir Evento ---
+  // --- 5. Modal de Join ---
+  const joinModal = document.getElementById('join-modal');
+  const joinCloseBtns = document.querySelectorAll('[data-close-join]');
+  const joinFormView = document.getElementById('join-form-view');
+  const joinConfirmView = document.getElementById('join-confirm-view');
+  const joinForm = document.getElementById('join-form');
+
+  // Abrir modal de Join y restablecer a la vista del formulario
+  const openJoinModal = () => {
+    if (joinFormView) joinFormView.classList.remove('is-hidden');
+    if (joinConfirmView) joinConfirmView.classList.remove('is-visible');
+    if (joinForm) joinForm.reset();
+
+    if (joinModal) {
+      joinModal.classList.add('is-open');
+      document.body.classList.add('no-scroll');
+      const firstInput = joinForm?.querySelector('input');
+      if (firstInput) setTimeout(() => firstInput.focus(), 50);
+    }
+  };
+
+  // Cerrar modal de Join y restaurar scroll
+  const closeJoinModal = () => {
+    if (joinModal) {
+      joinModal.classList.remove('is-open');
+      document.body.classList.remove('no-scroll');
+    }
+  };
+
+  // Vincular botones Join para abrir el modal
+  document.querySelectorAll('[data-open-join]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openJoinModal();
+    });
+  });
+
+  // Vincular botones de cierre
+  joinCloseBtns.forEach((btn) => {
+    btn.addEventListener('click', closeJoinModal);
+  });
+
+  // Cerrar al hacer clic en el fondo oscuro
+  if (joinModal) {
+    joinModal.addEventListener('click', (e) => {
+      if (e.target === joinModal) {
+        closeJoinModal();
+      }
+    });
+  }
+
+  // Cerrar al presionar Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && joinModal?.classList.contains('is-open')) {
+      closeJoinModal();
+    }
+  });
+
+  // Procesar envío del formulario de Join
+  if (joinForm) {
+    joinForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('join-name')?.value.trim();
+      const email = document.getElementById('join-email')?.value.trim();
+
+      if (!name || !email) return;
+
+      // Mostrar pantalla de confirmación exitosa
+      if (joinFormView) joinFormView.classList.add('is-hidden');
+      if (joinConfirmView) joinConfirmView.classList.add('is-visible');
+    });
+  }
+
+  // --- 6. Botón para Compartir Evento ---
   const shareBtn = document.getElementById('btn-share-event');
   if (shareBtn) {
     shareBtn.addEventListener('click', () => {
@@ -243,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 6. Formulario de Suscripción al Newsletter ---
+  // --- 7. Formulario de Suscripción al Newsletter ---
   const newsletterForm = document.getElementById('newsletter-form');
   const newsletterSuccess = document.getElementById('newsletter-success');
 

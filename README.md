@@ -37,6 +37,7 @@ NestX/
 ├── index.html            # Landing page principal y modales interactivos
 ├── faq.html              # Centro de Preguntas Frecuentes (FAQ)
 ├── privacy-policy.html   # Políticas de Privacidad y Tratamiento de Datos
+├── designSystem.html     # Sistema de Diseño y Catálogo de Componentes UI
 ├── styles.css            # Hoja de estilos pura (tokens, layout, componentes y modales)
 ├── script.js             # Lógica interactiva en JavaScript vainilla (directorio de eventos y modales)
 ├── images/               # Recursos gráficos, mapas e identidades universitarias
@@ -98,3 +99,4 @@ npx serve .
 14. **Páginas Secundarias:**
     - [faq.html](file:///Users/arkev/Documents/GitHub/NestX/faq.html): Preguntas frecuentes con acordeones interactivos y buscador/filtros.
     - [privacy-policy.html](file:///Users/arkev/Documents/GitHub/NestX/privacy-policy.html): Aviso de privacidad y gobernanza de datos de la red.
+    - [designSystem.html](file:///Users/arkev/Documents/GitHub/NestX/designSystem.html): Sistema de diseño completo (tokens, paleta de colores, tipografía, espaciado, border radius, sombras, componentes interactivos y matriz de estados).

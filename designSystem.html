@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="NestX Design System & Component Library — Living style guide, design tokens, typography, surfaces, and reusable UI components.">
+  <title>NestX Design System — Tokens, Components & UI Guidelines</title>
+
+  <!-- Google Fonts: Montserrat & Material Symbols Rounded -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- NestX Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <style>
+    /* ==========================================================================
+       NESTX DESIGN SYSTEM — DOCUMENTATION UI EXTENSIONS
+       ========================================================================== */
+
+    :root {
+      --sidebar-width: 17.5rem;
+      --code-bg: #1e1b2e;
+      --code-fg: #f4f2f8;
+      --doc-border: rgba(55, 45, 93, 0.08);
+      --doc-accent-bg: rgba(235, 85, 83, 0.05);
+    }
+
+    body {
+      background-color: #faf9fd;
+      color: var(--foreground);
+    }
+
+    /* Top Utility Header */
+    .ds-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      height: 4rem;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-inline: 1.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .ds-brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+    }
+
+    .ds-badge-version {
+      background: var(--accent);
+      color: var(--primary);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      padding: 0.25rem 0.625rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border: 1px solid rgba(235, 85, 83, 0.2);
+    }
+
+    .ds-topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .ds-search-bar {
+      position: relative;
+      width: 16rem;
+      display: none;
+    }
+
+    @media (min-width: 900px) {
+      .ds-search-bar {
+        display: block;
+      }
+    }
+
+    .ds-search-input {
+      width: 100%;
+      height: 2.25rem;
+      padding-left: 2.25rem;
+      padding-right: 0.875rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background-color: var(--secondary);
+      font-size: 0.8125rem;
+      color: var(--foreground);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .ds-search-input:focus {
+      border-color: var(--primary);
+      background-color: #fff;
+      box-shadow: 0 0 0 3px var(--ring);
+    }
+
+    .ds-search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+      pointer-events: none;
+    }
+
+    /* Main Layout Grid */
+    .ds-layout {
+      display: flex;
+      min-height: calc(100vh - 4rem);
+      max-width: 96rem;
+      margin-inline: auto;
+    }
+
+    /* Sidebar Navigation */
+    .ds-sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      border-right: 1px solid var(--border);
+      background: #ffffff;
+      padding: 1.75rem 1.25rem;
+      position: sticky;
+      top: 4rem;
+      height: calc(100vh - 4rem);
+      overflow-y: auto;
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      .ds-sidebar {
+        display: block;
+      }
+    }
+
+    .ds-nav-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .ds-nav-title {
+      font-size: 0.6875rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-foreground);
+      margin-bottom: 0.625rem;
+      padding-left: 0.5rem;
+    }
+
+    .ds-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .ds-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-md);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--foreground-light);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .ds-nav-link:hover {
+      background-color: var(--secondary);
+      color: var(--primary);
+    }
+
+    .ds-nav-link.is-active {
+      background-color: var(--accent);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .ds-nav-link .material-symbols-rounded {
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+      transition: color 0.15s ease;
+    }
+
+    .ds-nav-link:hover .material-symbols-rounded,
+    .ds-nav-link.is-active .material-symbols-rounded {
+      color: var(--primary);
+    }
+
+    /* Content Area */
+    .ds-content {
+      flex: 1;
+      padding: 2rem 1.5rem 6rem;
+      min-width: 0;
+    }
+
+    @media (min-width: 768px) {
+      .ds-content {
+        padding: 3rem 3rem 6rem;
+      }
+    }
+
+    /* Hero Banner */
+    .ds-hero {
+      background: linear-gradient(135deg, #ffffff 0%, #fdf5f5 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      padding: 2.5rem 2rem;
+      margin-bottom: 3.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .ds-hero::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 25rem;
+      height: 25rem;
+      background: radial-gradient(circle, rgba(235, 85, 83, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .ds-hero-title {
+      font-size: clamp(1.875rem, 4vw, 2.75rem);
+      font-weight: 900;
+      color: var(--foreground);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .ds-hero-lead {
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--foreground-light);
+      margin-top: 1rem;
+      max-width: 48rem;
+    }
+
+    .ds-hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(55, 45, 93, 0.08);
+    }
+
+    .ds-stat-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .ds-stat-number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .ds-stat-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--muted-foreground);
+    }
+
+    /* Section Styles */
+    .ds-section {
+      margin-bottom: 4.5rem;
+      scroll-margin-top: 5.5rem;
+    }
+
+    .ds-section-header {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .ds-section-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--foreground);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .ds-section-desc {
+      font-size: 0.9375rem;
+      color: var(--muted-foreground);
+      margin-top: 0.375rem;
+    }
+
+    /* Color Swatches Grid */
+    .ds-color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .ds-color-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xs);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .ds-color-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(235, 85, 83, 0.3);
+    }
+
+    .ds-swatch {
+      height: 5.5rem;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 0.5rem;
+    }
+
+    .ds-swatch-badge {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.05em;
+    }
+
+    .ds-color-body {
+      padding: 1rem;
+    }
+
+    .ds-color-name {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--foreground);
+    }
+
+    .ds-color-var {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.75rem;
+      color: var(--primary);
+      margin-top: 0.25rem;
+      font-weight: 600;
+    }
+
+    .ds-color-value {
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+      margin-top: 0.125rem;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ds-copy-hint {
+      font-size: 0.6875rem;
+      color: var(--muted-foreground);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .ds-color-card:hover .ds-copy-hint {
+      opacity: 1;
+    }
+
+    /* Typography Showcase */
+    .ds-type-specimen {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .ds-type-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding-block: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+
+    @media (min-width: 768px) {
+      .ds-type-row {
+        grid-template-columns: 14rem 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .ds-type-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0.5rem;
+    }
+
+    .ds-type-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .ds-type-role {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--foreground);
+    }
+
+    .ds-type-token {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .ds-type-specs {
+      font-size: 0.6875rem;
+      color: var(--muted-foreground);
+    }
+
+    .ds-type-preview {
+      overflow-x: auto;
+      min-width: 0;
+    }
+
+    /* Live Pangram Tester */
+    .ds-pangram-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 1.25rem;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .ds-pangram-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      font-size: 0.9375rem;
+      color: var(--foreground);
+      outline: none;
+    }
+
+    .ds-pangram-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--ring);
+    }
+
+    /* Spacing Visualizer */
+    .ds-spacing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+      gap: 1rem;
+    }
+
+    .ds-spacing-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .ds-spacing-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8125rem;
+    }
+
+    .ds-spacing-bar-wrapper {
+      height: 1.5rem;
+      background: var(--secondary);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      padding-inline: 2px;
+    }
+
+    .ds-spacing-bar {
+      height: 1.25rem;
+      background: var(--primary);
+      border-radius: var(--radius-sm);
+      transition: width 0.3s ease;
+    }
+
+    /* Border Radius Grid */
+    .ds-radius-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+      gap: 1.25rem;
+    }
+
+    .ds-radius-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .ds-radius-box {
+      width: 5rem;
+      height: 5rem;
+      background: var(--accent);
+      border: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Shadows Grid */
+    .ds-shadow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+      gap: 1.5rem;
+    }
+
+    .ds-shadow-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease;
+    }
+
+    .ds-shadow-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Master Token Table */
+    .ds-table-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow-x: auto;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .ds-token-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.8125rem;
+    }
+
+    .ds-token-table th {
+      background: var(--secondary);
+      padding: 0.875rem 1rem;
+      font-weight: 700;
+      color: var(--foreground);
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      font-size: 0.6875rem;
+      letter-spacing: 0.05em;
+    }
+
+    .ds-token-table td {
+      padding: 0.875rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--foreground-light);
+    }
+
+    .ds-token-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .ds-token-table tr:hover td {
+      background-color: #faf9fd;
+    }
+
+    .ds-token-code {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      color: var(--primary);
+      font-weight: 600;
+      background: var(--accent);
+      padding: 0.15rem 0.4rem;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Component Showcase Blocks */
+    .ds-component-block {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .ds-component-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ds-component-title {
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--foreground);
+    }
+
+    .ds-component-canvas {
+      padding: 1.5rem;
+      background: #faf9fd;
+      border-radius: var(--radius-lg);
+      border: 1px dashed var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .ds-state-matrix {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+      gap: 1.25rem;
+    }
+
+    .ds-state-cell {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+    }
+
+    .ds-state-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted-foreground);
+    }
+
+    /* Code Snippet Viewer */
+    .ds-code-drawer {
+      margin-top: 1rem;
+    }
+
+    .ds-code-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted-foreground);
+      padding: 0.375rem 0.75rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: #fff;
+      transition: all 0.15s ease;
+    }
+
+    .ds-code-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .ds-code-block {
+      display: none;
+      margin-top: 0.75rem;
+      background: var(--code-bg);
+      color: var(--code-fg);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.78125rem;
+      line-height: 1.5;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    .ds-code-block.is-visible {
+      display: block;
+    }
+
+    /* Interactive Stepper Sandbox */
+    .ds-stepper-sandbox {
+      max-width: 32rem;
+      margin-inline: auto;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Toast Notification */
+    .ds-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      background: var(--foreground);
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: var(--shadow-xl);
+      transform: translateY(100px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ds-toast.is-shown {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .ds-toast .material-symbols-rounded {
+      color: #10b981;
+      font-size: 1.125rem;
+    }
+
+    /* Simulation of forced states */
+    .sim-hover {
+      background-color: var(--primary-hover) !important;
+      box-shadow: var(--shadow-primary) !important;
+    }
+
+    .sim-focus {
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 3px var(--ring) !important;
+    }
+
+    .sim-active {
+      transform: scale(0.96) !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==================== TOP NAVIGATION BAR ==================== -->
+  <header class="ds-topbar">
+    <div class="ds-brand-group">
+      <a href="index.html#top" aria-label="Go to NestX home">
+        <img src="images/NestX.svg" alt="NestX Logo" style="height: 1.875rem; width: auto;">
+      </a>
+      <span class="ds-badge-version">Design System v1.2</span>
+    </div>
+
+    <div class="ds-topbar-actions">
+      <a href="index.html" class="btn btn-ghost btn-sm">
+        <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+        <span>Back to Website</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="ds-layout">
+
+    <!-- ==================== SIDEBAR NAVIGATION ==================== -->
+    <aside class="ds-sidebar" aria-label="Design System Navigation">
+      <div class="ds-nav-group">
+        <p class="ds-nav-title">Foundations</p>
+        <nav class="ds-nav-list">
+          <a href="#colors" class="ds-nav-link is-active">
+            <span class="material-symbols-rounded">palette</span>
+            <span>Color Palette</span>
+          </a>
+          <a href="#typography" class="ds-nav-link">
+            <span class="material-symbols-rounded">text_fields</span>
+            <span>Typography</span>
+          </a>
+          <a href="#spacing" class="ds-nav-link">
+            <span class="material-symbols-rounded">straighten</span>
+            <span>Spacing &amp; Layout</span>
+          </a>
+          <a href="#radius" class="ds-nav-link">
+            <span class="material-symbols-rounded">rounded_corner</span>
+            <span>Border Radius</span>
+          </a>
+          <a href="#shadows" class="ds-nav-link">
+            <span class="material-symbols-rounded">layers</span>
+            <span>Shadows &amp; Depth</span>
+          </a>
+          <a href="#tokens" class="ds-nav-link">
+            <span class="material-symbols-rounded">token</span>
+            <span>Token Directory</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="ds-nav-group">
+        <p class="ds-nav-title">Components</p>
+        <nav class="ds-nav-list">
+          <a href="#buttons" class="ds-nav-link">
+            <span class="material-symbols-rounded">smart_button</span>
+            <span>Buttons &amp; Actions</span>
+          </a>
+          <a href="#badges" class="ds-nav-link">
+            <span class="material-symbols-rounded">sell</span>
+            <span>Badges &amp; Tags</span>
+          </a>
+          <a href="#forms" class="ds-nav-link">
+            <span class="material-symbols-rounded">input</span>
+            <span>Form Controls</span>
+          </a>
+          <a href="#stepper" class="ds-nav-link">
+            <span class="material-symbols-rounded">linear_scale</span>
+            <span>2-Step Modal Stepper</span>
+          </a>
+          <a href="#cards" class="ds-nav-link">
+            <span class="material-symbols-rounded">view_quilt</span>
+            <span>Cards &amp; Modules</span>
+          </a>
+          <a href="#callouts" class="ds-nav-link">
+            <span class="material-symbols-rounded">info</span>
+            <span>Callouts &amp; Alerts</span>
+          </a>
+          <a href="#icons" class="ds-nav-link">
+            <span class="material-symbols-rounded">emoji_symbols</span>
+            <span>Icon Scale</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT AREA ==================== -->
+    <main class="ds-content">
+
+      <!-- Hero Header -->
+      <section class="ds-hero">
+        <span class="badge-tag badge-accent">Living Styleguide &amp; UI Architecture</span>
+        <h1 class="ds-hero-title" style="margin-top: 0.75rem;">NestX Design System</h1>
+        <p class="ds-hero-lead">
+          A cohesive, accessible design language built with vanilla CSS tokens, fluid typography, and modular UI
+          components tailored for the Adventist Innovation Network.
+        </p>
+
+        <div class="ds-hero-stats">
+          <div class="ds-stat-item">
+            <span class="ds-stat-number">15+</span>
+            <span class="ds-stat-label">Color Tokens</span>
+          </div>
+          <div class="ds-stat-item">
+            <span class="ds-stat-number">6</span>
+            <span class="ds-stat-label">Border Radii</span>
+          </div>
+          <div class="ds-stat-item">
+            <span class="ds-stat-number">6</span>
+            <span class="ds-stat-label">Shadow Depths</span>
+          </div>
+          <div class="ds-stat-item">
+            <span class="ds-stat-number">10</span>
+            <span class="ds-stat-label">Type Scales</span>
+          </div>
+          <div class="ds-stat-item">
+            <span class="ds-stat-number">100%</span>
+            <span class="ds-stat-label">Vanilla CSS</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           1. COLOR PALETTE
+           ================================================================== -->
+      <section id="colors" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">palette</span>
+              Color Palette
+            </h2>
+            <p class="ds-section-desc">Click any swatch to copy its CSS custom property or HEX code.</p>
+          </div>
+        </div>
+
+        <h3 class="ds-component-title" style="margin-bottom: 1rem;">Brand &amp; Interactive Colors</h3>
+        <div class="ds-color-grid">
+          <!-- Primary Coral -->
+          <div class="ds-color-card" data-copy="var(--primary)" data-hex="#eb5553">
+            <div class="ds-swatch" style="background-color: var(--primary);">
+              <span class="ds-swatch-badge">Coral Main</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Primary</h4>
+              <p class="ds-color-var">--primary</p>
+              <div class="ds-color-value">
+                <span>#eb5553</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Primary Hover -->
+          <div class="ds-color-card" data-copy="var(--primary-hover)" data-hex="#d84543">
+            <div class="ds-swatch" style="background-color: var(--primary-hover);">
+              <span class="ds-swatch-badge">Coral Hover</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Primary Hover</h4>
+              <p class="ds-color-var">--primary-hover</p>
+              <div class="ds-color-value">
+                <span>#d84543</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accent Tint -->
+          <div class="ds-color-card" data-copy="var(--accent)" data-hex="#fdecec">
+            <div class="ds-swatch" style="background-color: var(--accent); border-bottom: 1px solid var(--border);">
+              <span class="ds-swatch-badge" style="background: rgba(55,45,93,0.6);">Coral Tint</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Accent</h4>
+              <p class="ds-color-var">--accent</p>
+              <div class="ds-color-value">
+                <span>#fdecec</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Focus Ring -->
+          <div class="ds-color-card" data-copy="var(--ring)" data-hex="rgba(235, 85, 83, 0.25)">
+            <div class="ds-swatch"
+              style="background-color: rgba(235, 85, 83, 0.25); border-bottom: 1px solid var(--border);">
+              <span class="ds-swatch-badge" style="background: rgba(55,45,93,0.6);">Focus Halo</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Focus Ring</h4>
+              <p class="ds-color-var">--ring</p>
+              <div class="ds-color-value">
+                <span>rgba(235,85,83,0.25)</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="ds-component-title" style="margin-bottom: 1rem; margin-top: 2rem;">Neutrals &amp; Typography</h3>
+        <div class="ds-color-grid">
+          <!-- Foreground Indigo -->
+          <div class="ds-color-card" data-copy="var(--foreground)" data-hex="#372d5d">
+            <div class="ds-swatch" style="background-color: var(--foreground);">
+              <span class="ds-swatch-badge">Deep Indigo</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Foreground</h4>
+              <p class="ds-color-var">--foreground</p>
+              <div class="ds-color-value">
+                <span>#372d5d</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Foreground Light -->
+          <div class="ds-color-card" data-copy="var(--foreground-light)" data-hex="#514382">
+            <div class="ds-swatch" style="background-color: var(--foreground-light);">
+              <span class="ds-swatch-badge">Medium Indigo</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Foreground Light</h4>
+              <p class="ds-color-var">--foreground-light</p>
+              <div class="ds-color-value">
+                <span>#514382</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Muted Foreground -->
+          <div class="ds-color-card" data-copy="var(--muted-foreground)" data-hex="#6d6684">
+            <div class="ds-swatch" style="background-color: var(--muted-foreground);">
+              <span class="ds-swatch-badge">Slate Indigo</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Muted Foreground</h4>
+              <p class="ds-color-var">--muted-foreground</p>
+              <div class="ds-color-value">
+                <span>#6d6684</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Surface -->
+          <div class="ds-color-card" data-copy="var(--secondary)" data-hex="#f4f2f8">
+            <div class="ds-swatch" style="background-color: var(--secondary); border-bottom: 1px solid var(--border);">
+              <span class="ds-swatch-badge" style="background: rgba(55,45,93,0.6);">Surface Soft</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Secondary</h4>
+              <p class="ds-color-var">--secondary</p>
+              <div class="ds-color-value">
+                <span>#f4f2f8</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Muted Background -->
+          <div class="ds-color-card" data-copy="var(--muted)" data-hex="#f6f5f9">
+            <div class="ds-swatch" style="background-color: var(--muted); border-bottom: 1px solid var(--border);">
+              <span class="ds-swatch-badge" style="background: rgba(55,45,93,0.6);">Muted Fill</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Muted Surface</h4>
+              <p class="ds-color-var">--muted</p>
+              <div class="ds-color-value">
+                <span>#f6f5f9</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Border Divider -->
+          <div class="ds-color-card" data-copy="var(--border)" data-hex="#e9e6f0">
+            <div class="ds-swatch" style="background-color: var(--border);">
+              <span class="ds-swatch-badge" style="background: rgba(55,45,93,0.6);">Border</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Border Color</h4>
+              <p class="ds-color-var">--border</p>
+              <div class="ds-color-value">
+                <span>#e9e6f0</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="ds-component-title" style="margin-bottom: 1rem; margin-top: 2rem;">Feedback &amp; Status Colors</h3>
+        <div class="ds-color-grid">
+          <!-- Success -->
+          <div class="ds-color-card" data-copy="#059669" data-hex="#059669">
+            <div class="ds-swatch" style="background-color: #059669;">
+              <span class="ds-swatch-badge">Success</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Success Emerald</h4>
+              <p class="ds-color-var">#059669</p>
+              <div class="ds-color-value">
+                <span>Background: #ecfdf5</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Warning -->
+          <div class="ds-color-card" data-copy="#d97706" data-hex="#d97706">
+            <div class="ds-swatch" style="background-color: #d97706;">
+              <span class="ds-swatch-badge">Warning</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Warning Amber</h4>
+              <p class="ds-color-var">#d97706</p>
+              <div class="ds-color-value">
+                <span>Background: #fffbeb</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Danger -->
+          <div class="ds-color-card" data-copy="#dc2626" data-hex="#dc2626">
+            <div class="ds-swatch" style="background-color: #dc2626;">
+              <span class="ds-swatch-badge">Danger</span>
+            </div>
+            <div class="ds-color-body">
+              <h4 class="ds-color-name">Danger Crimson</h4>
+              <p class="ds-color-var">#dc2626</p>
+              <div class="ds-color-value">
+                <span>Background: #fef2f2</span>
+                <span class="ds-copy-hint">Copy CSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           2. TYPOGRAPHY
+           ================================================================== -->
+      <section id="typography" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">text_fields</span>
+              Typography System
+            </h2>
+            <p class="ds-section-desc">Powered by Montserrat (Google Fonts) with geometric balance and clean weights.
+            </p>
+          </div>
+        </div>
+
+        <div class="ds-type-specimen">
+          <!-- Hero Display -->
+          <div class="ds-type-row">
+            <div class="ds-type-meta">
+              <span class="ds-type-role">Hero Display Title</span>
+              <span class="ds-type-token">.hero-title</span>
+              <span class="ds-type-specs">clamp(2.25rem, 5vw, 3.5rem) · 800 ExtraBold</span>
+            </div>
+            <div class="ds-type-preview">
+              <h1 class="hero-title" style="margin: 0;">Connect. Collaborate. Create Impact.</h1>
+            </div>
+          </div>
+
+          <!-- Section Title Large (H1/H2) -->
+          <div class="ds-type-row">
+            <div class="ds-type-meta">
+              <span class="ds-type-role">Section Title Large</span>
+              <span class="ds-type-token">.section-title</span>
+              <span class="ds-type-specs">2.25rem (36px) · 800 ExtraBold</span>
+            </div>
+            <div class="ds-type-preview">
+              <h2 class="section-title" style="margin: 0;">Fostering Applied Innovation</h2>
+            </div>
+          </div>
+
+          <!-- Modal Title (H3) -->
+          <div class="ds-type-row">
+            <div class="ds-type-meta">
+              <span class="ds-type-role">Modal / Workshop Title</span>
+              <span class="ds-type-token">.section-title--modal</span>
+              <span class="ds-type-specs">1.5rem (24px) · 700 Bold</span>
+            </div>
+            <div class="ds-type-preview">
+              <h3 class="section-title section-title--modal" style="margin: 0;">Design Thinking: From Empathy to Impact
+              </h3>
+            </div>
+          </div>
+
+          <!-- Card Title (H4) -->
+          <div class="ds-type-row">
+            <div class="ds-type-meta">
+              <span class="ds-type-role">Card Title (H4)</span>
+              <span class="ds-type-token">.secondary-event-card-title</span>
+              <span class="ds-type-specs">1.125rem (18px) · 700 Bold</span>
+            </div>
+            <div class="ds-type-preview">
+              <h4 style="font-size: 1.125rem; font-weight: 700; color: var(--foreground); margin: 0;">Research &amp;
+                Applied Innovation Symposium 2026</h4>
+            </div>
+          </div>
+
+          <!-- Lead Paragraph -->
+          <div class="ds-type-row">
+            <div class="ds-type-meta">
+              <span class="ds-type-role">Body Lead</span>
+              <span class="ds-type-token">.section-subtitle</span>
+              <span class="ds-type-specs">1.125rem (18px) · 500 Medium</span>
+            </div>
+            <div class="ds-type-preview">
+              <p class="section-subtitle" style="margin: 0;">Connecting universities, researchers, and creators across
+                Latin America to solve systemic educational challenges.</p>
+            </div>
+          </div>
+
+          <!-- Body Regular -->
+          <div class="ds-type-row">
+            <div class="ds-type-meta">
+              <span class="ds-type-role">Body Text</span>
+              <span class="ds-type-token">p / .modal-event-desc</span>
+              <span class="ds-type-specs">0.875rem (14px) · 400 Regular · Line Height 1.6</span>
+            </div>
+            <div class="ds-type-preview">
+              <p class="modal-event-desc" style="margin: 0;">An immersive and collaborative workshop designed for
+                faculty, students, and researchers across the NestX network. Learn to apply the 5 phases of Design
+                Thinking.</p>
+            </div>
+          </div>
+
+          <!-- Eyebrow & Meta -->
+          <div class="ds-type-row">
+            <div class="ds-type-meta">
+              <span class="ds-type-role">Eyebrow / Metadata Label</span>
+              <span class="ds-type-token">.modal-detail-label</span>
+              <span class="ds-type-specs">0.6875rem (11px) · 700 Bold · Uppercase · 0.05em</span>
+            </div>
+            <div class="ds-type-preview">
+              <span class="modal-detail-label" style="display: block;">SPEAKER &amp; FACILITATOR</span>
+              <span class="sidebar-head-label" style="display: block; margin-top: 0.25rem;">DATE &amp; FORMAT</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Type Tester -->
+        <div class="ds-pangram-box">
+          <label for="ds-pangram-field"
+            style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--muted-foreground);">Live
+            Interactive Type Tester:</label>
+          <input type="text" id="ds-pangram-field" class="ds-pangram-input"
+            value="NestX: Empowering Adventist university networks through collaborative innovation.">
+          <p id="ds-pangram-output" style="font-size: 1.5rem; font-weight: 700; color: var(--foreground); margin: 0;">
+            NestX: Empowering Adventist university networks through collaborative innovation.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           3. SPACING & LAYOUT
+           ================================================================== -->
+      <section id="spacing" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">straighten</span>
+              Spacing Scale &amp; Layout Tokens
+            </h2>
+            <p class="ds-section-desc">Based on a consistent 4px baseline rhythm.</p>
+          </div>
+        </div>
+
+        <div class="ds-spacing-grid">
+          <div class="ds-spacing-card">
+            <div class="ds-spacing-header">
+              <strong>Space 1 (4px)</strong>
+              <span class="ds-token-code">0.25rem</span>
+            </div>
+            <div class="ds-spacing-bar-wrapper">
+              <div class="ds-spacing-bar" style="width: 4px;"></div>
+            </div>
+          </div>
+
+          <div class="ds-spacing-card">
+            <div class="ds-spacing-header">
+              <strong>Space 2 (8px)</strong>
+              <span class="ds-token-code">0.5rem</span>
+            </div>
+            <div class="ds-spacing-bar-wrapper">
+              <div class="ds-spacing-bar" style="width: 8px;"></div>
+            </div>
+          </div>
+
+          <div class="ds-spacing-card">
+            <div class="ds-spacing-header">
+              <strong>Space 3 (12px)</strong>
+              <span class="ds-token-code">0.75rem</span>
+            </div>
+            <div class="ds-spacing-bar-wrapper">
+              <div class="ds-spacing-bar" style="width: 12px;"></div>
+            </div>
+          </div>
+
+          <div class="ds-spacing-card">
+            <div class="ds-spacing-header">
+              <strong>Space 4 (16px)</strong>
+              <span class="ds-token-code">1rem</span>
+            </div>
+            <div class="ds-spacing-bar-wrapper">
+              <div class="ds-spacing-bar" style="width: 16px;"></div>
+            </div>
+          </div>
+
+          <div class="ds-spacing-card">
+            <div class="ds-spacing-header">
+              <strong>Space 6 (24px)</strong>
+              <span class="ds-token-code">1.5rem</span>
+            </div>
+            <div class="ds-spacing-bar-wrapper">
+              <div class="ds-spacing-bar" style="width: 24px;"></div>
+            </div>
+          </div>
+
+          <div class="ds-spacing-card">
+            <div class="ds-spacing-header">
+              <strong>Space 8 (32px)</strong>
+              <span class="ds-token-code">2rem</span>
+            </div>
+            <div class="ds-spacing-bar-wrapper">
+              <div class="ds-spacing-bar" style="width: 32px;"></div>
+            </div>
+          </div>
+
+          <div class="ds-spacing-card">
+            <div class="ds-spacing-header">
+              <strong>Space 16 (64px)</strong>
+              <span class="ds-token-code">4rem</span>
+            </div>
+            <div class="ds-spacing-bar-wrapper">
+              <div class="ds-spacing-bar" style="width: 64px;"></div>
+            </div>
+          </div>
+
+          <div class="ds-spacing-card">
+            <div class="ds-spacing-header">
+              <strong>Space 20 (80px)</strong>
+              <span class="ds-token-code">5rem</span>
+            </div>
+            <div class="ds-spacing-bar-wrapper">
+              <div class="ds-spacing-bar" style="width: 80px;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           4. BORDER RADIUS
+           ================================================================== -->
+      <section id="radius" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">rounded_corner</span>
+              Border Radius Tokens
+            </h2>
+            <p class="ds-section-desc">Corner radii used to shape cards, inputs, buttons, and dialogs.</p>
+          </div>
+        </div>
+
+        <div class="ds-radius-grid">
+          <!-- sm -->
+          <div class="ds-radius-card">
+            <div class="ds-radius-box" style="border-radius: var(--radius-sm);">6px</div>
+            <div>
+              <strong style="font-size: 0.875rem;">Small</strong>
+              <p class="ds-color-var">--radius-sm</p>
+              <span style="font-size: 0.75rem; color: var(--muted-foreground);">0.375rem (6px)</span>
+            </div>
+          </div>
+
+          <!-- md -->
+          <div class="ds-radius-card">
+            <div class="ds-radius-box" style="border-radius: var(--radius-md);">8px</div>
+            <div>
+              <strong style="font-size: 0.875rem;">Medium</strong>
+              <p class="ds-color-var">--radius-md</p>
+              <span style="font-size: 0.75rem; color: var(--muted-foreground);">0.5rem (8px)</span>
+            </div>
+          </div>
+
+          <!-- lg -->
+          <div class="ds-radius-card">
+            <div class="ds-radius-box" style="border-radius: var(--radius-lg);">12px</div>
+            <div>
+              <strong style="font-size: 0.875rem;">Large</strong>
+              <p class="ds-color-var">--radius-lg</p>
+              <span style="font-size: 0.75rem; color: var(--muted-foreground);">0.75rem (12px)</span>
+            </div>
+          </div>
+
+          <!-- xl -->
+          <div class="ds-radius-card">
+            <div class="ds-radius-box" style="border-radius: var(--radius-xl);">16px</div>
+            <div>
+              <strong style="font-size: 0.875rem;">Extra Large</strong>
+              <p class="ds-color-var">--radius-xl</p>
+              <span style="font-size: 0.75rem; color: var(--muted-foreground);">1rem (16px)</span>
+            </div>
+          </div>
+
+          <!-- 2xl -->
+          <div class="ds-radius-card">
+            <div class="ds-radius-box" style="border-radius: var(--radius-2xl);">24px</div>
+            <div>
+              <strong style="font-size: 0.875rem;">2X Large</strong>
+              <p class="ds-color-var">--radius-2xl</p>
+              <span style="font-size: 0.75rem; color: var(--muted-foreground);">1.5rem (24px)</span>
+            </div>
+          </div>
+
+          <!-- Full -->
+          <div class="ds-radius-card">
+            <div class="ds-radius-box" style="border-radius: var(--radius-full);">Pill</div>
+            <div>
+              <strong style="font-size: 0.875rem;">Pill / Full</strong>
+              <p class="ds-color-var">--radius-full</p>
+              <span style="font-size: 0.75rem; color: var(--muted-foreground);">9999px</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           5. SHADOWS & DEPTH
+           ================================================================== -->
+      <section id="shadows" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">layers</span>
+              Shadow &amp; Elevation Scale
+            </h2>
+            <p class="ds-section-desc">Subtle multi-layered indigo shadows tuned for depth without visual noise.</p>
+          </div>
+        </div>
+
+        <div class="ds-shadow-grid">
+          <!-- xs -->
+          <div class="ds-shadow-card" style="box-shadow: var(--shadow-xs);">
+            <strong style="font-size: 0.875rem;">Extra Subtle</strong>
+            <span class="ds-token-code">--shadow-xs</span>
+            <span style="font-size: 0.75rem; color: var(--muted-foreground);">Subcard separation</span>
+          </div>
+
+          <!-- sm -->
+          <div class="ds-shadow-card" style="box-shadow: var(--shadow-sm);">
+            <strong style="font-size: 0.875rem;">Small</strong>
+            <span class="ds-token-code">--shadow-sm</span>
+            <span style="font-size: 0.75rem; color: var(--muted-foreground);">Resting cards</span>
+          </div>
+
+          <!-- md -->
+          <div class="ds-shadow-card" style="box-shadow: var(--shadow-md);">
+            <strong style="font-size: 0.875rem;">Medium</strong>
+            <span class="ds-token-code">--shadow-md</span>
+            <span style="font-size: 0.75rem; color: var(--muted-foreground);">Interactive cards</span>
+          </div>
+
+          <!-- lg -->
+          <div class="ds-shadow-card" style="box-shadow: var(--shadow-lg);">
+            <strong style="font-size: 0.875rem;">Large</strong>
+            <span class="ds-token-code">--shadow-lg</span>
+            <span style="font-size: 0.75rem; color: var(--muted-foreground);">Card Hover State</span>
+          </div>
+
+          <!-- xl -->
+          <div class="ds-shadow-card" style="box-shadow: var(--shadow-xl);">
+            <strong style="font-size: 0.875rem;">Extra Large</strong>
+            <span class="ds-token-code">--shadow-xl</span>
+            <span style="font-size: 0.75rem; color: var(--muted-foreground);">Modal Dialogs</span>
+          </div>
+
+          <!-- Primary Glow -->
+          <div class="ds-shadow-card" style="box-shadow: var(--shadow-primary); border-color: rgba(235,85,83,0.3);">
+            <strong style="font-size: 0.875rem; color: var(--primary);">Brand Glow</strong>
+            <span class="ds-token-code">--shadow-primary</span>
+            <span style="font-size: 0.75rem; color: var(--muted-foreground);">CTA Button Hover</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           6. MASTER TOKEN DIRECTORY TABLE
+           ================================================================== -->
+      <section id="tokens" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">token</span>
+              Design Tokens Directory
+            </h2>
+            <p class="ds-section-desc">Quick reference table of all CSS variables available across the codebase.</p>
+          </div>
+        </div>
+
+        <div class="ds-table-wrapper">
+          <table class="ds-token-table">
+            <thead>
+              <tr>
+                <th>Token Variable</th>
+                <th>Category</th>
+                <th>Value</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="ds-token-code">--primary</span></td>
+                <td>Brand Color</td>
+                <td>#eb5553</td>
+                <td>Primary action color, key icons, active state indicators.</td>
+              </tr>
+              <tr>
+                <td><span class="ds-token-code">--primary-hover</span></td>
+                <td>Brand Color</td>
+                <td>#d84543</td>
+                <td>Darker coral for button hover and active pressed states.</td>
+              </tr>
+              <tr>
+                <td><span class="ds-token-code">--foreground</span></td>
+                <td>Typography</td>
+                <td>#372d5d</td>
+                <td>Dark indigo for high-contrast headings and primary text.</td>
+              </tr>
+              <tr>
+                <td><span class="ds-token-code">--foreground-light</span></td>
+                <td>Typography</td>
+                <td>#514382</td>
+                <td>Medium indigo for body text and descriptive paragraphs.</td>
+              </tr>
+              <tr>
+                <td><span class="ds-token-code">--muted-foreground</span></td>
+                <td>Typography</td>
+                <td>#6d6684</td>
+                <td>Slate indigo for labels, captions, and secondary metadata.</td>
+              </tr>
+              <tr>
+                <td><span class="ds-token-code">--accent</span></td>
+                <td>Surface</td>
+                <td>#fdecec</td>
+                <td>Light coral wash for badges, callouts, and completed steps.</td>
+              </tr>
+              <tr>
+                <td><span class="ds-token-code">--secondary</span></td>
+                <td>Surface</td>
+                <td>#f4f2f8</td>
+                <td>Neutral soft background for card containers and badges.</td>
+              </tr>
+              <tr>
+                <td><span class="ds-token-code">--border</span></td>
+                <td>Divider</td>
+                <td>#e9e6f0</td>
+                <td>Subtle structural border for cards, inputs, and dividers.</td>
+              </tr>
+              <tr>
+                <td><span class="ds-token-code">--ring</span></td>
+                <td>Accessibility</td>
+                <td>rgba(235, 85, 83, 0.25)</td>
+                <td>Focus ring halo for inputs, selects, and keyboard navigation.</td>
+              </tr>
+              <tr>
+                <td><span class="ds-token-code">--radius-2xl</span></td>
+                <td>Border Radius</td>
+                <td>1.5rem (24px)</td>
+                <td>Corner radius for modals, featured event card, hero banner.</td>
+              </tr>
+              <tr>
+                <td><span class="ds-token-code">--shadow-xl</span></td>
+                <td>Elevation</td>
+                <td>0 20px 35px -5px ...</td>
+                <td>High-elevation shadow for floating modal dialogs and toasts.</td>
+              </tr>
+              <tr>
+                <td><span class="ds-token-code">--container-max-w</span></td>
+                <td>Layout</td>
+                <td>80rem (1280px)</td>
+                <td>Maximum content container width across the platform.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           7. REUSABLE COMPONENTS & STATES: BUTTONS
+           ================================================================== -->
+      <section id="buttons" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">smart_button</span>
+              Buttons &amp; Interactive States
+            </h2>
+            <p class="ds-section-desc">Pill-shaped, accessible buttons with hover, focus, active, and disabled states.
+            </p>
+          </div>
+        </div>
+
+        <!-- Button Variants -->
+        <div class="ds-component-block">
+          <div class="ds-component-header">
+            <h3 class="ds-component-title">Button Variants &amp; Sizes</h3>
+            <button type="button" class="ds-code-btn" data-target="code-btn-variants">
+              <span class="material-symbols-rounded">code</span>
+              <span>View HTML</span>
+            </button>
+          </div>
+
+          <div class="ds-component-canvas">
+            <!-- Primary -->
+            <button type="button" class="btn btn-primary">
+              <span>Primary Button</span>
+              <span class="material-symbols-rounded btn-icon" aria-hidden="true">arrow_forward</span>
+            </button>
+
+            <!-- Secondary -->
+            <button type="button" class="btn btn-secondary">
+              <span>Secondary</span>
+            </button>
+
+            <!-- Outline -->
+            <button type="button" class="btn btn-outline">
+              <span>Outline</span>
+            </button>
+
+            <!-- Ghost -->
+            <button type="button" class="btn btn-ghost">
+              <span>Ghost Action</span>
+            </button>
+
+            <!-- Small -->
+            <button type="button" class="btn btn-primary btn-sm">
+              <span>Small Button</span>
+            </button>
+
+            <!-- Share Button -->
+            <button type="button" class="btn-share">
+              <span class="material-symbols-rounded" aria-hidden="true">share</span>
+              <span>Share announcement</span>
+            </button>
+          </div>
+
+          <div id="code-btn-variants" class="ds-code-block">&lt;!-- Primary Button --&gt;
+            &lt;button type="button" class="btn btn-primary"&gt;
+            &lt;span&gt;Register for Workshop&lt;/span&gt;
+            &lt;span class="material-symbols-rounded btn-icon" aria-hidden="true"&gt;arrow_forward&lt;/span&gt;
+            &lt;/button&gt;
+
+            &lt;!-- Secondary Button --&gt;
+            &lt;button type="button" class="btn btn-secondary"&gt;Learn More&lt;/button&gt;
+
+            &lt;!-- Outline Button --&gt;
+            &lt;button type="button" class="btn btn-outline"&gt;View Details&lt;/button&gt;
+
+            &lt;!-- Ghost Button --&gt;
+            &lt;button type="button" class="btn btn-ghost btn-sm"&gt;Cancel&lt;/button&gt;</div>
+        </div>
+
+        <!-- Button States Matrix -->
+        <div class="ds-component-block">
+          <div class="ds-component-header">
+            <h3 class="ds-component-title">Primary Button State Matrix</h3>
+          </div>
+
+          <div class="ds-state-matrix">
+            <div class="ds-state-cell">
+              <span class="ds-state-label">Normal / Default</span>
+              <button type="button" class="btn btn-primary">Normal</button>
+            </div>
+            <div class="ds-state-cell">
+              <span class="ds-state-label">Hover State</span>
+              <button type="button" class="btn btn-primary sim-hover">Hover</button>
+            </div>
+            <div class="ds-state-cell">
+              <span class="ds-state-label">Focus Halo</span>
+              <button type="button" class="btn btn-primary sim-focus">Focused</button>
+            </div>
+            <div class="ds-state-cell">
+              <span class="ds-state-label">Active Pressed</span>
+              <button type="button" class="btn btn-primary sim-active">Pressed</button>
+            </div>
+            <div class="ds-state-cell">
+              <span class="ds-state-label">Disabled</span>
+              <button type="button" class="btn btn-primary" disabled
+                style="opacity: 0.5; pointer-events: none;">Disabled</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           8. REUSABLE COMPONENTS: BADGES & TAGS
+           ================================================================== -->
+      <section id="badges" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">sell</span>
+              Badges, Pills &amp; Status Indicators
+            </h2>
+            <p class="ds-section-desc">Used across event cards, metadata headers, and category tags.</p>
+          </div>
+        </div>
+
+        <div class="ds-component-block">
+          <div class="ds-component-header">
+            <h3 class="ds-component-title">Badges &amp; Micro-indicators</h3>
+            <button type="button" class="ds-code-btn" data-target="code-badges">
+              <span class="material-symbols-rounded">code</span>
+              <span>View HTML</span>
+            </button>
+          </div>
+
+          <div class="ds-component-canvas">
+            <!-- Featured badge with pulsating dot -->
+            <span class="badge-featured">
+              <span class="pulse-dot"></span>
+              Featured Workshop
+            </span>
+
+            <!-- Tag badge -->
+            <span class="badge-tag">
+              <span class="material-symbols-rounded icon--primary" aria-hidden="true">label</span>
+              Hands-On Workshop
+            </span>
+
+            <!-- Accent badge -->
+            <span class="badge-tag badge-accent">
+              Academic Symposium
+            </span>
+
+            <!-- Status pill -->
+            <span class="status-pill">Upcoming</span>
+
+            <!-- Spots indicator -->
+            <span class="badge-spots">
+              <span class="material-symbols-rounded" aria-hidden="true">group</span>
+              Limited to 50 participants
+            </span>
+
+            <!-- Tag bubble -->
+            <span class="tag-bubble">#Innovation</span>
+            <span class="tag-bubble">#Co-creation</span>
+            <span class="tag-bubble">#Agile</span>
+          </div>
+
+          <div id="code-badges" class="ds-code-block">&lt;!-- Featured Badge with Animated Pulse Dot --&gt;
+            &lt;span class="badge-featured"&gt;
+            &lt;span class="pulse-dot"&gt;&lt;/span&gt;
+            Featured Workshop
+            &lt;/span&gt;
+
+            &lt;!-- Tag Badge with Icon --&gt;
+            &lt;span class="badge-tag"&gt;
+            &lt;span class="material-symbols-rounded icon--primary" aria-hidden="true"&gt;label&lt;/span&gt;
+            Hands-On Workshop
+            &lt;/span&gt;
+
+            &lt;!-- Status Pill --&gt;
+            &lt;span class="status-pill"&gt;Upcoming&lt;/span&gt;</div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           9. REUSABLE COMPONENTS: FORMS & INPUTS
+           ================================================================== -->
+      <section id="forms" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">input</span>
+              Form Controls &amp; Input States
+            </h2>
+            <p class="ds-section-desc">Standardized text inputs, search fields, selects, and textareas.</p>
+          </div>
+        </div>
+
+        <div class="ds-component-block">
+          <div class="ds-component-header">
+            <h3 class="ds-component-title">Input Controls &amp; States</h3>
+            <button type="button" class="ds-code-btn" data-target="code-forms">
+              <span class="material-symbols-rounded">code</span>
+              <span>View HTML</span>
+            </button>
+          </div>
+
+          <div class="ds-component-canvas"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1.5rem; width: 100%;">
+            <!-- Default Input -->
+            <div class="modal-form-group">
+              <label for="ds-input-default" class="modal-label">Default Text Input</label>
+              <input type="text" id="ds-input-default" class="modal-input" placeholder="e.g. Ana Martinez">
+            </div>
+
+            <!-- Focused Input -->
+            <div class="modal-form-group">
+              <label for="ds-input-focus" class="modal-label">Focused State</label>
+              <input type="email" id="ds-input-focus" class="modal-input sim-focus" value="ana.martinez@university.edu">
+            </div>
+
+            <!-- Disabled Input -->
+            <div class="modal-form-group">
+              <label for="ds-input-disabled" class="modal-label">Disabled State</label>
+              <input type="text" id="ds-input-disabled" class="modal-input" value="Locked institution code" disabled
+                style="background-color: var(--muted); cursor: not-allowed; opacity: 0.7;">
+            </div>
+
+            <!-- Select Dropdown -->
+            <div class="modal-form-group">
+              <label for="ds-select-example" class="modal-label">Select Dropdown</label>
+              <select id="ds-select-example" class="modal-select">
+                <option value="UM">Universidad de Montemorelos</option>
+                <option value="UNAC">Corporación Universitaria Adventista</option>
+                <option value="UPeU">Universidad Peruana Unión</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="code-forms" class="ds-code-block">&lt;div class="modal-form-group"&gt;
+            &lt;label for="reg-name" class="modal-label"&gt;Full name *&lt;/label&gt;
+            &lt;input type="text" id="reg-name" class="modal-input" placeholder="e.g. Ana Martinez" required&gt;
+            &lt;/div&gt;
+
+            &lt;div class="modal-form-group"&gt;
+            &lt;label for="reg-uni" class="modal-label"&gt;University&lt;/label&gt;
+            &lt;select id="reg-uni" class="modal-select"&gt;
+            &lt;option value="UM"&gt;Universidad de Montemorelos&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;/div&gt;</div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           10. REUSABLE COMPONENTS: 2-STEP MODAL STEPPER
+           ================================================================== -->
+      <section id="stepper" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">linear_scale</span>
+              Two-Step Modal Stepper
+            </h2>
+            <p class="ds-section-desc">Interactive step indicator used in the redesigned Event Modal.</p>
+          </div>
+        </div>
+
+        <div class="ds-component-block">
+          <div class="ds-component-header">
+            <h3 class="ds-component-title">Interactive Stepper Sandbox</h3>
+            <button type="button" class="ds-code-btn" data-target="code-stepper">
+              <span class="material-symbols-rounded">code</span>
+              <span>View HTML</span>
+            </button>
+          </div>
+
+          <div class="ds-stepper-sandbox">
+            <!-- Stepper Container -->
+            <div id="demo-stepper" class="modal-stepper" aria-label="Registration steps demo">
+              <button type="button" id="demo-step-1" class="modal-step is-active" aria-label="Step 1: Event Details">
+                <span class="modal-step-number">1</span>
+                <span class="modal-step-label">Event Details</span>
+              </button>
+              <div id="demo-connector" class="modal-step-connector"></div>
+              <button type="button" id="demo-step-2" class="modal-step" aria-label="Step 2: Registration">
+                <span class="modal-step-number">2</span>
+                <span class="modal-step-label">Registration</span>
+              </button>
+            </div>
+
+            <!-- Demo Content Area -->
+            <div id="demo-step-content-1" style="display: block;">
+              <span class="badge-tag badge-accent">Step 1: Info Screen</span>
+              <h4 style="font-size: 1.125rem; font-weight: 700; margin-top: 0.5rem;">Event Details View</h4>
+              <p style="font-size: 0.8125rem; color: var(--muted-foreground); margin-top: 0.25rem;">
+                Shows title, description, instructor, date, format, and spots.
+              </p>
+              <div class="modal-footer modal-footer--space-between" style="margin-top: 1.5rem;">
+                <button type="button" class="btn btn-ghost btn-sm">Close</button>
+                <button type="button" id="demo-btn-next" class="btn btn-primary">
+                  <span>Register</span>
+                  <span class="material-symbols-rounded btn-icon">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="demo-step-content-2" style="display: none;">
+              <button type="button" id="demo-btn-prev" class="modal-back-btn">
+                <span class="material-symbols-rounded">arrow_back</span>
+                <span>Back to event details</span>
+              </button>
+              <div class="modal-event-summary-pill">
+                <span class="material-symbols-rounded modal-event-summary-icon">event</span>
+                <div class="modal-event-summary-text">
+                  <span class="modal-event-summary-label">Registering for:</span>
+                  <strong class="modal-event-summary-title">Design Thinking: From Empathy to Impact</strong>
+                </div>
+              </div>
+              <p style="font-size: 0.8125rem; color: var(--muted-foreground);">Form inputs are presented here in Step 2.
+              </p>
+              <div class="modal-footer modal-footer--space-between" style="margin-top: 1.5rem;">
+                <button type="button" id="demo-btn-back2" class="btn btn-ghost btn-sm">Back</button>
+                <button type="button" id="demo-btn-complete" class="btn btn-primary">Complete Registration</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="code-stepper" class="ds-code-block">&lt;!-- 2-Step Modal Stepper --&gt;
+            &lt;div id="event-modal-stepper" class="modal-stepper" aria-label="Registration steps"&gt;
+            &lt;button type="button" id="step-indicator-details" class="modal-step is-active" aria-label="Step 1: Event
+            Details"&gt;
+            &lt;span class="modal-step-number"&gt;1&lt;/span&gt;
+            &lt;span class="modal-step-label"&gt;Event Details&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;div id="modal-step-connector" class="modal-step-connector"&gt;&lt;/div&gt;
+            &lt;div id="step-indicator-form" class="modal-step" aria-label="Step 2: Registration"&gt;
+            &lt;span class="modal-step-number"&gt;2&lt;/span&gt;
+            &lt;span class="modal-step-label"&gt;Registration&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;</div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           11. REUSABLE COMPONENTS: CARDS & MODULES
+           ================================================================== -->
+      <section id="cards" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">view_quilt</span>
+              Cards &amp; Structural Modules
+            </h2>
+            <p class="ds-section-desc">Key card layouts extracted directly from production.</p>
+          </div>
+        </div>
+
+        <!-- Metadata Detail Cards (from modal) -->
+        <div class="ds-component-block">
+          <div class="ds-component-header">
+            <h3 class="ds-component-title">Event Detail Item Cards</h3>
+            <button type="button" class="ds-code-btn" data-target="code-detail-cards">
+              <span class="material-symbols-rounded">code</span>
+              <span>View HTML</span>
+            </button>
+          </div>
+
+          <div class="modal-details-grid" style="margin-bottom: 0;">
+            <!-- Date & Time -->
+            <div class="modal-detail-card">
+              <div class="modal-detail-icon">
+                <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+              </div>
+              <div class="modal-detail-content">
+                <span class="modal-detail-label">Date &amp; Time</span>
+                <p class="modal-detail-value">November 20, 2026</p>
+                <p class="modal-detail-sub">4:00 PM - 6:30 PM CST</p>
+              </div>
+            </div>
+
+            <!-- Speaker -->
+            <div class="modal-detail-card">
+              <div class="modal-detail-icon">
+                <span class="material-symbols-rounded" aria-hidden="true">person</span>
+              </div>
+              <div class="modal-detail-content">
+                <span class="modal-detail-label">Speaker / Host</span>
+                <p class="modal-detail-value">Prof. Allen Zapién</p>
+                <p class="modal-detail-sub">Certified Design Thinking Facilitator</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="code-detail-cards" class="ds-code-block">&lt;div class="modal-detail-card"&gt;
+            &lt;div class="modal-detail-icon"&gt;
+            &lt;span class="material-symbols-rounded" aria-hidden="true"&gt;calendar_month&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="modal-detail-content"&gt;
+            &lt;span class="modal-detail-label"&gt;Date &amp; Time&lt;/span&gt;
+            &lt;p class="modal-detail-value"&gt;November 20, 2026&lt;/p&gt;
+            &lt;p class="modal-detail-sub"&gt;4:00 PM - 6:30 PM CST&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;</div>
+        </div>
+
+        <!-- Selected Event Summary Strip -->
+        <div class="ds-component-block">
+          <div class="ds-component-header">
+            <h3 class="ds-component-title">Event Summary Strip</h3>
+          </div>
+
+          <div class="modal-event-summary-pill" style="margin-bottom: 0;">
+            <span class="material-symbols-rounded modal-event-summary-icon" aria-hidden="true">event</span>
+            <div class="modal-event-summary-text">
+              <span class="modal-event-summary-label">Registering for:</span>
+              <strong class="modal-event-summary-title">Design Thinking: From Empathy to High-Impact Solutions</strong>
+              <span class="modal-event-summary-meta">November 20, 2026 · Live Zoom Workshop</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           12. REUSABLE COMPONENTS: CALLOUTS & CONFIRMATIONS
+           ================================================================== -->
+      <section id="callouts" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">info</span>
+              Callouts &amp; Feedback Banners
+            </h2>
+            <p class="ds-section-desc">Notice banners, certificates, and confirmation circles.</p>
+          </div>
+        </div>
+
+        <div class="ds-component-block">
+          <!-- Certificate Callout -->
+          <div class="modal-cert-callout">
+            <span class="material-symbols-rounded" aria-hidden="true">verified</span>
+            <span>A digital certificate of participation issued by the NestX Network will be awarded to all
+              attendees.</span>
+          </div>
+
+          <!-- Confirmation Icon Box -->
+          <div
+            style="background: #faf9fd; border-radius: var(--radius-xl); padding: 2rem; text-align: center; margin-top: 1.5rem; border: 1px solid var(--border);">
+            <div class="confirm-icon-circle">
+              <span class="material-symbols-rounded modal-confirm-icon" aria-hidden="true">check_circle</span>
+            </div>
+            <h4 class="section-title confirm-title" style="margin-top: 0.75rem;">Registration Confirmed!</h4>
+            <p class="confirm-lead">Your spot has been reserved. A confirmation email has been dispatched.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           13. ICON SCALE
+           ================================================================== -->
+      <section id="icons" class="ds-section">
+        <div class="ds-section-header">
+          <div>
+            <h2 class="ds-section-title">
+              <span class="material-symbols-rounded icon--primary">emoji_symbols</span>
+              Iconography Contextual Scale
+            </h2>
+            <p class="ds-section-desc">Google Material Symbols Rounded scaled for buttons, badges, inputs, and hero
+              blocks.</p>
+          </div>
+        </div>
+
+        <div class="ds-component-block">
+          <div
+            style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 2rem; padding: 1.5rem; background: #faf9fd; border-radius: var(--radius-lg);">
+            <div style="text-align: center;">
+              <span class="material-symbols-rounded" style="font-size: 12px; color: var(--primary);">label</span>
+              <p style="font-size: 0.6875rem; color: var(--muted-foreground); margin-top: 0.25rem;">12px · Badge</p>
+            </div>
+            <div style="text-align: center;">
+              <span class="material-symbols-rounded" style="font-size: 14px; color: var(--primary);">share</span>
+              <p style="font-size: 0.6875rem; color: var(--muted-foreground); margin-top: 0.25rem;">14px · Button</p>
+            </div>
+            <div style="text-align: center;">
+              <span class="material-symbols-rounded"
+                style="font-size: 16px; color: var(--primary);">arrow_forward</span>
+              <p style="font-size: 0.6875rem; color: var(--muted-foreground); margin-top: 0.25rem;">16px · Action</p>
+            </div>
+            <div style="text-align: center;">
+              <span class="material-symbols-rounded" style="font-size: 20px; color: var(--primary);">close</span>
+              <p style="font-size: 0.6875rem; color: var(--muted-foreground); margin-top: 0.25rem;">20px · Close</p>
+            </div>
+            <div style="text-align: center;">
+              <span class="material-symbols-rounded" style="font-size: 24px; color: var(--primary);">school</span>
+              <p style="font-size: 0.6875rem; color: var(--muted-foreground); margin-top: 0.25rem;">24px · Avatar</p>
+            </div>
+            <div style="text-align: center;">
+              <span class="material-symbols-rounded" style="font-size: 32px; color: var(--primary);">check_circle</span>
+              <p style="font-size: 0.6875rem; color: var(--muted-foreground); margin-top: 0.25rem;">32px · Modal</p>
+            </div>
+            <div style="text-align: center;">
+              <span class="material-symbols-rounded" style="font-size: 44px; color: var(--primary);">lightbulb</span>
+              <p style="font-size: 0.6875rem; color: var(--muted-foreground); margin-top: 0.25rem;">44px · Feature</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast Notification for Copy -->
+  <div id="ds-toast" class="ds-toast" role="status" aria-live="polite">
+    <span class="material-symbols-rounded">check_circle</span>
+    <span id="ds-toast-msg">Copied to clipboard!</span>
+  </div>
+
+  <!-- Interactive JavaScript logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Toast Notification Helper
+      const toast = document.getElementById('ds-toast');
+      const toastMsg = document.getElementById('ds-toast-msg');
+      let toastTimer = null;
+
+      const showToast = (message) => {
+        if (!toast || !toastMsg) return;
+        toastMsg.textContent = message;
+        toast.classList.add('is-shown');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.remove('is-shown');
+        }, 2200);
+      };
+
+      // 2. Click-to-copy for Color Swatches and Tokens
+      document.querySelectorAll('[data-copy]').forEach((el) => {
+        el.addEventListener('click', () => {
+          const val = el.getAttribute('data-copy');
+          if (val) {
+            navigator.clipboard.writeText(val).then(() => {
+              showToast(`Copied ${val} to clipboard!`);
+            }).catch(() => {
+              showToast(`Copied: ${val}`);
+            });
+          }
+        });
+      });
+
+      // 3. Interactive Code Snippet Toggles
+      document.querySelectorAll('[data-target]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-target');
+          const codeBlock = document.getElementById(targetId);
+          if (codeBlock) {
+            const isVisible = codeBlock.classList.toggle('is-visible');
+            btn.querySelector('span:last-child').textContent = isVisible ? 'Hide HTML' : 'View HTML';
+          }
+        });
+      });
+
+      // 4. Interactive Stepper Sandbox
+      const demoStep1 = document.getElementById('demo-step-1');
+      const demoStep2 = document.getElementById('demo-step-2');
+      const demoConnector = document.getElementById('demo-connector');
+      const contentStep1 = document.getElementById('demo-step-content-1');
+      const contentStep2 = document.getElementById('demo-step-content-2');
+      const btnNext = document.getElementById('demo-btn-next');
+      const btnPrev = document.getElementById('demo-btn-prev');
+      const btnBack2 = document.getElementById('demo-btn-back2');
+      const btnComplete = document.getElementById('demo-btn-complete');
+
+      const setDemoStep = (step) => {
+        if (step === 1) {
+          demoStep1?.classList.add('is-active');
+          demoStep1?.classList.remove('is-completed');
+          demoStep2?.classList.remove('is-active', 'is-completed');
+          demoConnector?.classList.remove('is-active');
+          if (contentStep1) contentStep1.style.display = 'block';
+          if (contentStep2) contentStep2.style.display = 'none';
+        } else if (step === 2) {
+          demoStep1?.classList.remove('is-active');
+          demoStep1?.classList.add('is-completed');
+          demoStep2?.classList.add('is-active');
+          demoConnector?.classList.add('is-active');
+          if (contentStep1) contentStep1.style.display = 'none';
+          if (contentStep2) contentStep2.style.display = 'block';
+        }
+      };
+
+      btnNext?.addEventListener('click', () => setDemoStep(2));
+      btnPrev?.addEventListener('click', () => setDemoStep(1));
+      btnBack2?.addEventListener('click', () => setDemoStep(1));
+      demoStep1?.addEventListener('click', () => setDemoStep(1));
+      demoStep2?.addEventListener('click', () => setDemoStep(2));
+      btnComplete?.addEventListener('click', () => {
+        showToast('Registration simulation submitted successfully!');
+        setDemoStep(1);
+      });
+
+      // 5. Live Pangram Tester
+      const pangramInput = document.getElementById('ds-pangram-field');
+      const pangramOutput = document.getElementById('ds-pangram-output');
+      if (pangramInput && pangramOutput) {
+        pangramInput.addEventListener('input', (e) => {
+          pangramOutput.textContent = e.target.value || 'Type something to preview...';
+        });
+      }
+
+      // 6. Quick Search Filter
+      const searchInput = document.getElementById('ds-quick-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          document.querySelectorAll('.ds-section').forEach((sec) => {
+            if (!query) {
+              sec.style.display = 'block';
+              return;
+            }
+            const text = sec.textContent.toLowerCase();
+            sec.style.display = text.includes(query) ? 'block' : 'none';
+          });
+        });
+      }
+
+      // 7. Active Navigation Highlighting on Scroll
+      const navLinks = document.querySelectorAll('.ds-nav-link');
+      const sections = document.querySelectorAll('.ds-section');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach((link) => {
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('is-active');
+              } else {
+                link.classList.remove('is-active');
+              }
+            });
+          }
+        });
+      }, {
+        rootMargin: '-20% 0px -70% 0px'
+      });
+
+      sections.forEach((sec) => observer.observe(sec));
+    });
+  </script>
+</body>
+
+</html>

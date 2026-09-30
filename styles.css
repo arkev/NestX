@@ -3793,3 +3793,311 @@ body.ds-body {
 .sim-active {
   transform: scale(0.96) !important;
 }
+
+/* --- 29. Design System — Reemplazos de estilos inline (consolidación) ---
+   Clases semánticas para eliminar todos los style="" de designSystem.html.
+   Sin duplicados: reutiliza .text-center, .is-hidden y tokens existentes. */
+
+/* Logo en topbar */
+.ds-logo-img {
+  height: 1.875rem;
+  width: auto;
+}
+
+/* Utilidades de espaciado DS (solo las usadas en la doc) */
+.ds-m-0 {
+  margin: 0;
+}
+
+.ds-mb-0 {
+  margin-bottom: 0;
+}
+
+.ds-mb-4 {
+  margin-bottom: 1rem;
+}
+
+.ds-mt-1 {
+  margin-top: 0.25rem;
+}
+
+.ds-mt-2 {
+  margin-top: 0.5rem;
+}
+
+.ds-mt-3 {
+  margin-top: 0.75rem;
+}
+
+.ds-mt-6 {
+  margin-top: 1.5rem;
+}
+
+.ds-mt-8 {
+  margin-top: 2rem;
+}
+
+.ds-block {
+  display: block;
+}
+
+/* Fondos de demostración para swatches (el color ES el dato a mostrar) */
+.ds-bg-primary {
+  background-color: var(--primary);
+}
+
+.ds-bg-primary-hover {
+  background-color: var(--primary-hover);
+}
+
+.ds-bg-accent {
+  background-color: var(--accent);
+}
+
+.ds-bg-ring {
+  background-color: rgba(235, 85, 83, 0.25);
+}
+
+.ds-bg-foreground {
+  background-color: var(--foreground);
+}
+
+.ds-bg-foreground-light {
+  background-color: var(--foreground-light);
+}
+
+.ds-bg-muted-fg {
+  background-color: var(--muted-foreground);
+}
+
+.ds-bg-secondary {
+  background-color: var(--secondary);
+}
+
+.ds-bg-muted {
+  background-color: var(--muted);
+}
+
+.ds-bg-border {
+  background-color: var(--border);
+}
+
+.ds-bg-success {
+  background-color: #059669;
+}
+
+.ds-bg-warning {
+  background-color: #d97706;
+}
+
+.ds-bg-danger {
+  background-color: #dc2626;
+}
+
+.ds-swatch--bordered {
+  border-bottom: 1px solid var(--border);
+}
+
+.ds-swatch-badge--on-light {
+  background: rgba(55, 45, 93, 0.6);
+}
+
+/* Textos de demostración */
+.ds-card-strong {
+  font-size: 0.875rem;
+}
+
+.ds-caption {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.ds-icon-caption {
+  font-size: 0.6875rem;
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+}
+
+.ds-demo-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.ds-demo-text {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+
+.ds-text-primary-sm {
+  font-size: 0.875rem;
+  color: var(--primary);
+}
+
+.ds-pangram-output {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+
+/* Barras del visualizador de espaciado (el ancho ES el dato) */
+.ds-bar-w-4 {
+  width: 4px;
+}
+
+.ds-bar-w-8 {
+  width: 8px;
+}
+
+.ds-bar-w-12 {
+  width: 12px;
+}
+
+.ds-bar-w-16 {
+  width: 16px;
+}
+
+.ds-bar-w-24 {
+  width: 24px;
+}
+
+.ds-bar-w-32 {
+  width: 32px;
+}
+
+.ds-bar-w-64 {
+  width: 64px;
+}
+
+.ds-bar-w-80 {
+  width: 80px;
+}
+
+/* Demos de border-radius (el valor ES el dato) */
+.ds-radius-sm {
+  border-radius: var(--radius-sm);
+}
+
+.ds-radius-md {
+  border-radius: var(--radius-md);
+}
+
+.ds-radius-lg {
+  border-radius: var(--radius-lg);
+}
+
+.ds-radius-xl {
+  border-radius: var(--radius-xl);
+}
+
+.ds-radius-2xl {
+  border-radius: var(--radius-2xl);
+}
+
+.ds-radius-full {
+  border-radius: var(--radius-full);
+}
+
+/* Demos de sombras (el valor ES el dato) */
+.ds-shadow-xs {
+  box-shadow: var(--shadow-xs);
+}
+
+.ds-shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.ds-shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+.ds-shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.ds-shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+.ds-shadow-brand {
+  box-shadow: var(--shadow-primary);
+  border-color: rgba(235, 85, 83, 0.3);
+}
+
+/* Canvas de formularios en modo grid */
+.ds-component-canvas--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Vista previa de confirmación */
+.ds-confirm-preview {
+  background: #faf9fd;
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+/* Escala de iconos */
+.ds-icon-scale {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: #faf9fd;
+  border-radius: var(--radius-lg);
+}
+
+.ds-icon-12 {
+  font-size: 12px;
+  color: var(--primary);
+}
+
+.ds-icon-14 {
+  font-size: 14px;
+  color: var(--primary);
+}
+
+.ds-icon-16 {
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.ds-icon-20 {
+  font-size: 20px;
+  color: var(--primary);
+}
+
+.ds-icon-24 {
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.ds-icon-32 {
+  font-size: 32px;
+  color: var(--primary);
+}
+
+.ds-icon-44 {
+  font-size: 44px;
+  color: var(--primary);
+}
+
+/* Estados nativos (evitan inline en demos de disabled) */
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.modal-input:disabled,
+.modal-select:disabled {
+  background-color: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+}

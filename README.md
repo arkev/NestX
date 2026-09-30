@@ -8,12 +8,13 @@ Versión **100% pura y estándar (Vanilla)** de la plataforma web de **NestX**, 
 
 - **Cero Dependencias:** No requiere Node.js, Next.js, React ni Tailwind para ejecutarse.
 - **HTML5 Semántico y Accesible:** Estructura limpia con etiquetas estándar (`header`, `main`, `section`, `article`, `nav`, `footer`) y atributos ARIA para lectores de pantalla.
-- **CSS3 Moderno y Modular:**
+- **CSS3 Moderno y Modular (fuente única: `styles.css`):**
   - Sistema de diseño basado en variables y tokens de marca NestX (`#eb5553` Coral, `#372d5d` Índigo).
   - Layouts completamente responsivos utilizando CSS Grid y Flexbox.
   - Efectos visuales de papel rasgado (*RoughBand*) renderizados con trazados SVG vectoriales nativos.
   - Animaciones de revelado al hacer scroll (`.reveal`) respetando las preferencias de accesibilidad (`prefers-reduced-motion`).
   - Microinteracciones y transiciones fluidas de entrada en modales y componentes (`modalViewFadeIn`).
+  - **Cero estilos en HTML:** ninguna página usa `<style>` ni `style=""`. Todo vive en `styles.css` (secciones 1–29, incluyendo §28 Design System Showcase y §29 reemplazos de demos inline).
 - **JavaScript ES6+ Nativo:**
   - Barra de navegación pegajosa (*sticky header*) con desenfoque de fondo y borde dinámico según el scroll.
   - Menú móvil colapsable con soporte para tecla `Escape` y cierre automático al interactuar.
@@ -26,6 +27,8 @@ Versión **100% pura y estándar (Vanilla)** de la plataforma web de **NestX**, 
   - Funcionalidad de copiado al portapapeles con feedback temporal en el botón para compartir eventos.
   - Formulario de suscripción al boletín con retroalimentación visual interactiva.
   - Modal secundario para postularse a la red (*Join the Network*).
+  - **JS sin estilos inline:** toda visibilidad se gestiona con clases (`.is-hidden`, `.is-open`, `.is-visible`, `.is-active`, `.is-completed`, `.is-shown`); no se usa `element.style.display`.
+- **Design System interactivo (`designSystem.html`, ~1460 líneas):** paleta con click-to-copy + toast, probador tipográfico en vivo, visualizador de espaciado, tokens de radio/sombra, tabla de tokens, matrices de estados de botones/inputs, sandbox del stepper de 2 pasos y escala de iconos. Su JS propio gestiona toast, toggles de código, stepper demo, pangram, filtro de secciones y resaltado de nav por `IntersectionObserver`.
 - **Iconografía e Identidad Visual:** Iconos Google Material Symbols Rounded y gráficos SVG nativos para máxima velocidad de renderizado, consistencia y cero dependencias de bibliotecas pesadas.
 
 ---
@@ -34,12 +37,12 @@ Versión **100% pura y estándar (Vanilla)** de la plataforma web de **NestX**, 
 
 ```plaintext
 NestX/
-├── index.html            # Landing page principal y modales interactivos
-├── faq.html              # Centro de Preguntas Frecuentes (FAQ)
-├── privacy-policy.html   # Políticas de Privacidad y Tratamiento de Datos
-├── designSystem.html     # Sistema de Diseño y Catálogo de Componentes UI
-├── styles.css            # Hoja de estilos pura (tokens, layout, componentes y modales)
-├── script.js             # Lógica interactiva en JavaScript vainilla (directorio de eventos y modales)
+├── index.html            # Landing page principal y modales interactivos (~1340 líneas, sin estilos inline)
+├── faq.html              # Centro de Preguntas Frecuentes con acordeones <details> (~330 líneas)
+├── privacy-policy.html   # Políticas de Privacidad y Tratamiento de Datos (~360 líneas)
+├── designSystem.html     # Sistema de Diseño y Catálogo de Componentes UI (~1460 líneas, sin <style> ni style="")
+├── styles.css            # Hoja de estilos única (~4100 líneas, §1–§29: tokens, layout, componentes, FAQ, policy y DS)
+├── script.js             # Lógica interactiva en JavaScript vainilla (~440 líneas: header, drawer, reveal, modales, share, newsletter)
 ├── images/               # Recursos gráficos, mapas e identidades universitarias
 │   ├── hero-globe.png
 │   ├── network-map.png
@@ -55,6 +58,14 @@ NestX/
 │       └── UPEU.png
 └── README.md             # Documentación del proyecto
 ```
+
+## Arquitectura CSS y Convenciones
+
+- **Fuente única:** todo el CSS vive en `styles.css`. Prohibido `<style>` y `style=""` en HTML.
+- **Secciones numeradas:** §1 tokens, §2–§5 base/utilidades/tipografía/botones, §6–§7 reveal/rough-band, §8–§20 secciones del sitio, §21 modales, §23 iconos, §24 estados/visibilidad, §25–§27 join/policy/FAQ, §28 showcase DS, §29 reemplazos de demos inline.
+- **Nomenclatura:** `ds-*` solo para el Design System (`ds-topbar`, `ds-swatch`, `ds-bg-primary`, `ds-bar-w-16`, `ds-radius-md`, `ds-shadow-md`, `ds-icon-24`); estados con `is-*`; utilidades globales (`.container`, `.text-center`, `.is-hidden`, `.btn:disabled`, `.modal-input:disabled`).
+- **Demos con datos visuales:** cuando el valor *es* el dato (color del swatch, ancho de barra, radio, sombra, tamaño de icono) se usa una clase `ds-*`, nunca inline.
+- **JS:** alternar visibilidad solo con `classList` (`is-hidden`, `is-open`, …). El `<body>` de `designSystem.html` lleva `class="ds-body"` para aplicar su fondo sin reglas `body` globales.
 
 ---
 
@@ -97,6 +108,6 @@ npx serve .
 12. **Partner Universities:** Alianza global con las universidades adventistas asociadas.
 13. **Footer:** Enlaces institucionales, redes sociales y navegación complementaria.
 14. **Páginas Secundarias:**
-    - [faq.html](file:///Users/arkev/Documents/GitHub/NestX/faq.html): Preguntas frecuentes con acordeones interactivos y buscador/filtros.
-    - [privacy-policy.html](file:///Users/arkev/Documents/GitHub/NestX/privacy-policy.html): Aviso de privacidad y gobernanza de datos de la red.
-    - [designSystem.html](file:///Users/arkev/Documents/GitHub/NestX/designSystem.html): Sistema de diseño completo (tokens, paleta de colores, tipografía, espaciado, border radius, sombras, componentes interactivos y matriz de estados).
+    - [faq.html](faq.html): Preguntas frecuentes con acordeones interactivos y buscador/filtros.
+    - [privacy-policy.html](privacy-policy.html): Aviso de privacidad y gobernanza de datos de la red.
+    - [designSystem.html](designSystem.html): Sistema de diseño completo — Color, Typography, Spacing, Radius, Shadows, Tokens, Buttons, Badges, Forms, 2-Step Stepper, Cards, Callouts e Icon Scale — con demos interactivas (copiar token, type tester, stepper sandbox, filtro y toast).
